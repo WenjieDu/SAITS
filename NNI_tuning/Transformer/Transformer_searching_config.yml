@@ -1,0 +1,18 @@
+experimentName: Transformer hyper-param searching
+authorName: tempuser
+trialConcurrency: 12
+trainingServicePlatform: local
+searchSpacePath: Transformer_searching_space.json
+multiThread: true
+useAnnotation: false
+tuner:
+    builtinTunerName: Random
+
+trial:
+    command: python ../../run_models.py --config_path Transformer_basic_config.ini --param_searching_mode
+    codeDir: .
+    gpuNum: 1
+
+localConfig:
+    useActiveGpu: true
+    maxTrialNumPerGpu: 3

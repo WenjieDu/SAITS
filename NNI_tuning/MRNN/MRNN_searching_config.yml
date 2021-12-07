@@ -1,0 +1,18 @@
+experimentName: BRITS hyper-param searching
+authorName: Wenjie Du
+trialConcurrency: 4
+trainingServicePlatform: local
+searchSpacePath: MRNN_searching_space.json
+multiThread: true
+useAnnotation: false
+tuner:
+    builtinTunerName: Random
+
+trial:
+    command: CUDA_VISIBLE_DEVICES=3 python ../../run_models.py --config_path MRNN_basic_config.ini --param_searching_mode
+    codeDir: .
+    gpuNum: 1
+
+localConfig:
+    useActiveGpu: true
+    maxTrialNumPerGpu: 4
