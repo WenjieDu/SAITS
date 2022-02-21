@@ -1,6 +1,6 @@
 # SAITS
 
-Code repository for paper "SAITS: Self-Attention-based Imputation for Time Series".
+Code repository for paper *[SAITS: Self-Attention-based Imputation for Time Series](https://arxiv.org/abs/2202.08516)*.
 
 The implementation of SAITS is in dir `modeling`. We give configurations of our models in dir `configs`, provide dataset links and preprocessing scripts in dir `dataset_generating_scripts`. Dir `NNI_tuning` contains hyper-parameter searching configurations.
 
