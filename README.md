@@ -1,10 +1,24 @@
-# SAITS
-![](https://img.shields.io/badge/Python-3.8-yellowgreen)
-![](https://img.shields.io/badge/PyTorch-1.8.1-green)
-![](https://img.shields.io/badge/Conda-Supported-lightgreen?style=social&logo=anaconda)
-![](https://img.shields.io/badge/License-GPL3-lightgreen)
-[![](https://img.shields.io/badge/Paper-arXiv_preprint-success)](https://arxiv.org/abs/2202.08516)
-![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Hits&edge_flat=false)
+<p align="center">
+    <a id="SAITS" href="#SAITS">
+        <img src="figs/SAITS full title.png" alt="SAITS Title" title="SAITS Title" width="600"/>
+    </a>
+</p>
+<!-- 
+<p align="center">
+  <ins><b>S</b></ins>elf-<ins><b>A</b></ins>ttention-based <ins><b>I</b></ins>mputation for <ins><b>T</b></ins>ime <ins><b>S</b></ins>eries 
+</p> 
+-->
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8-yellowgreen" />
+  <img src="https://img.shields.io/badge/PyTorch-1.8.1-green" />
+  <img src="https://img.shields.io/badge/Conda-Supported-lightgreen?style=social&logo=anaconda" />
+  <img src="https://img.shields.io/badge/License-GPL3-lightgreen" />
+  <a>
+    <img src="https://img.shields.io/badge/Paper-arXiv_preprint-success" />
+  </a>
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Hits&edge_flat=false" />
+</p>
 
 The official code repository for paper *[SAITS: Self-Attention-based Imputation for Time Series](https://arxiv.org/abs/2202.08516)*. 
 
