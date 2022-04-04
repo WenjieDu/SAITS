@@ -1,20 +1,15 @@
 <p align="center">
     <a id="SAITS" href="#SAITS">
-        <img src="figs/SAITS full title.png" alt="SAITS Title" title="SAITS Title" width="600"/>
+        <img src="figs/SAITS full title.svg?sanitize=true" alt="SAITS Title" title="SAITS Title" width="600"/>
     </a>
 </p>
-<!-- 
-<p align="center">
-  <ins><b>S</b></ins>elf-<ins><b>A</b></ins>ttention-based <ins><b>I</b></ins>mputation for <ins><b>T</b></ins>ime <ins><b>S</b></ins>eries 
-</p> 
--->
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.8-yellowgreen" />
+  <img src="https://img.shields.io/badge/Python-v3.8-yellowgreen" />
   <img src="https://img.shields.io/badge/PyTorch-1.8.1-green" />
   <img src="https://img.shields.io/badge/Conda-Supported-lightgreen?style=social&logo=anaconda" />
   <img src="https://img.shields.io/badge/License-GPL3-lightgreen" />
-  <a>
+  <a href="https://arxiv.org/abs/2202.08516">
     <img src="https://img.shields.io/badge/Paper-arXiv_preprint-success" />
   </a>
   <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Hits&edge_flat=false" />
@@ -47,7 +42,9 @@ usable python environment with an anaconda command `conda env create -f conda_en
 For datasets downloading and generating, please check out the scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts).
 
 ## ❖ Quick Run
-For example,
+Generate the dataset you need first. To do so, please check out the generating scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts).
+
+After data generation, train and test your model, for example,
 
 ```bash
 # for training
@@ -61,7 +58,7 @@ CUDA_VISIBLE_DEVICES=3 python run_models.py \
     --test_mode
 ```
 
-Note that paths of datasets and saving dirs may be different on personal computers, please check them in the configuration files.
+❗️Note that paths of datasets and saving dirs may be different on personal computers, please check them in the configuration files.
 
 ## ❖ Reference
 If you use this model or the code in this repository, please cite our paper 🤗
@@ -82,7 +79,7 @@ or
 `Wenjie Du, David Côté, and Yan Liu. "SAITS: Self-Attention-based Imputation for Time Series." ArXiv abs/2202.08516`
 
 ## ❖ Acknowledgments
-Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support. Thanks to Ciena for providing computing resources.
+Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support. Thanks to Ciena for providing computing resources. Thanks to all reviewers for helping improve the quality of this paper. And thank you all for your attention to this work!
 
 <details open>
 <summary><b><i>👏 Click to View Stargazers and Forkers: </i></b></summary>
