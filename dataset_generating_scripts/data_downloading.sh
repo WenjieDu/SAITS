@@ -23,5 +23,5 @@ unzip PRSA2017_Data_20130301-20170228.zip
 
 # for Electricity
 cd .. && mkdir Electricity && cd Electricity
-wget wget https://archive.ics.uci.edu/ml/machine-learning-databases/00321/LD2011_2014.txt.zip
+wget https://archive.ics.uci.edu/ml/machine-learning-databases/00321/LD2011_2014.txt.zip
 unzip LD2011_2014.txt.zip
