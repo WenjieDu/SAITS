@@ -1,6 +1,6 @@
 <p align="center">
     <a id="SAITS" href="#SAITS">
-        <img src="figs/SAITS full title.svg?sanitize=true" alt="SAITS Title" title="SAITS Title" width="600"/>
+        <img src="https://raw.githubusercontent.com/WenjieDu/SAITS/master/figs/SAITS full title.svg?sanitize=true" alt="SAITS Title" title="SAITS Title" width="600"/>
     </a>
 </p>
 
@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Python-v3.8-yellowgreen" />
   <img src="https://img.shields.io/badge/PyTorch-1.8.1-green" />
   <img src="https://img.shields.io/badge/Conda-Supported-lightgreen?style=social&logo=anaconda" />
-  <img src="https://img.shields.io/badge/License-GPL3-lightgreen" />
+  <img src="https://img.shields.io/badge/License-GPL--v3-lightgreen" />
   <a href="https://arxiv.org/abs/2202.08516">
     <img src="https://img.shields.io/badge/Paper-arXiv_preprint-success" />
   </a>
@@ -16,6 +16,30 @@
 </p>
 
 The official code repository for paper *[SAITS: Self-Attention-based Imputation for Time Series](https://arxiv.org/abs/2202.08516)*. 
+
+> 📣 Attention please‼️ <br>
+> SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox born for data mining on partially-observed time series (POTS). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉
+
+``` python
+# Install PyPOTS first: pip install git+https://github.com/WenjieDu/PyPOTS.git
+from sklearn.preprocessing import StandardScaler
+from pypots.data import load_specific_dataset, mcar, fill_nan_with_mask
+from pypots.imputation import SAITS
+from pypots.utils.metrics import cal_mae
+# Data preprocessing. Tedious, but PyPOTS can help. 🤓
+X,_ = load_specific_dataset('physionet_2012')  # For datasets in PyPOTS database, PyPOTS will automatically download and extract it.
+num_samples=len(X['RecordID'].unique())
+X = X.drop('RecordID', axis=1)
+X = StandardScaler().fit_transform(X.to_numpy())
+X = X.reshape(num_samples, 48, -1)
+X_intact, X, missing_mask, indicating_mask = mcar(X, 0.1) # hold out 10% observed values as ground truth
+X = fill_nan_with_mask(X, missing_mask)
+# Model training. This is PyPOTS showtime. 💪
+saits_base = SAITS(seq_len=48, n_features=37, n_layers=2, d_model=256, d_inner=128, n_head=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
+saits_base.fit(X)  # train the model. Here I use the whole dataset as the training set, because ground truth is not visible to the model.
+imputation = saits_base.impute(X)  # impute the originally-missing values and artificially-missing values
+mae = cal_mae(imputation, X_intact, indicating_mask)  # calculate mean absolute error on the ground truth (artificially-missing values)
+```
 
 ⦿ **`Motivation`**: SAITS is developed primarily to help overcome the drawbacks (slow speed, memory constraints, and compounding error) of RNN-based imputation models and to obtain the state-of-the-art (SOTA) imputation accuracy on partially-observed time series.
 
