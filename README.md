@@ -21,13 +21,14 @@ The official code repository for paper *[SAITS: Self-Attention-based Imputation 
 > SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox born for data mining on partially-observed time series (POTS). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉
 
 ``` python
-# Install PyPOTS first: pip install git+https://github.com/WenjieDu/PyPOTS.git
+# Install PyPOTS first: pip install pypots 
+
 from sklearn.preprocessing import StandardScaler
 from pypots.data import load_specific_dataset, mcar, fill_nan_with_mask
 from pypots.imputation import SAITS
 from pypots.utils.metrics import cal_mae
 # Data preprocessing. Tedious, but PyPOTS can help. 🤓
-X,_ = load_specific_dataset('physionet_2012')  # For datasets in PyPOTS database, PyPOTS will automatically download and extract it.
+X = load_specific_dataset('physionet_2012')['X']  # For datasets in PyPOTS database, PyPOTS will automatically download and extract it.
 num_samples=len(X['RecordID'].unique())
 X = X.drop('RecordID', axis=1)
 X = StandardScaler().fit_transform(X.to_numpy())
