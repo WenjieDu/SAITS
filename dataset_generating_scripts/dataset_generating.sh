@@ -2,7 +2,7 @@
 python gene_PhysioNet2012_dataset.py \
   --raw_data_path RawData/Physio2012_mega/mega \
   --outcome_files_dir RawData/Physio2012_mega/ \
-  --dataset_name physio2012_36feats \
+  --dataset_name physio2012_37feats \
   --saving_path ../generated_datasets
 
 # generate UCI Beijing air quality dataset
