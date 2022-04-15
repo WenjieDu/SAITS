@@ -12,9 +12,6 @@ wget https://www.physionet.org/files/challenge-2012/1.0.0/Outcomes-c.txt?downloa
 
 tar -zxf set-a.tar.gz && tar -zxf set-b.tar.gz && tar -zxf set-c.tar.gz
 mkdir mega && mv set-a/* mega && mv set-b/* mega && mv set-c/* mega
-cat Outcomes-a.txt > mega_outcomes.txt
-cat Outcomes-b.txt >> mega_outcomes.txt
-cat Outcomes-c.txt >> mega_outcomes.txt
 
 # for Air-Quality
 cd .. && mkdir AirQuality && cd AirQuality
