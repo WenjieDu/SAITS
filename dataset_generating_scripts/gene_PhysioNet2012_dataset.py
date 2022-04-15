@@ -17,7 +17,7 @@ np.random.seed(26)
 def process_each_set(set_df, all_labels):
     # gene labels, y
     sample_ids = set_df['RecordID'].to_numpy().reshape(-1, 48)[:, 0]
-    y = all_labels[sample_ids].to_numpy().reshape(-1, 1)
+    y = all_labels.loc[sample_ids].to_numpy().reshape(-1, 1)
     # gene feature vectors, X
     set_df = set_df.drop('RecordID', axis=1)
     feature_names = set_df.columns.tolist()
@@ -35,7 +35,7 @@ def keep_only_features_to_normalize(all_feats, to_remove):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate PhysioNet2012 dataset')
     parser.add_argument("--raw_data_path", help='path of physio 2012 raw dataset', type=str)
-    parser.add_argument("--outcome_file_path", help="path of raw dataset's outcome file", type=str)
+    parser.add_argument("--outcome_files_dir", help="dir path of raw dataset's outcome file", type=str)
     parser.add_argument("--artificial_missing_rate", help='artificially mask out additional values',
                         type=float, default=0.1)
     parser.add_argument("--train_frac", help='fraction of train set', type=float, default=0.8)
@@ -55,7 +55,15 @@ if __name__ == '__main__':
                           'Generate PhysioNet2012 dataset', mode='w')
     logger.info(args)
 
-    all_outcomes = pd.read_csv(args.outcome_file_path).set_index('RecordID')['In-hospital_death']
+    outcome_files = ['Outcomes-a.txt', 'Outcomes-b.txt', 'Outcomes-c.txt']
+    outcome_collector = []
+    for o_ in outcome_files:
+        outcome_file_path = os.path.join(args.outcome_files_dir, o_)
+        with open(outcome_file_path, 'r') as f:
+            outcome = pd.read_csv(f)[['In-hospital_death', 'RecordID']]
+        outcome = outcome.set_index('RecordID')
+        outcome_collector.append(outcome)
+    all_outcomes = pd.concat(outcome_collector)
 
     all_recordID = []
     df_collector = []
