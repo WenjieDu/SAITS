@@ -36,7 +36,7 @@ X = X.reshape(num_samples, 48, -1)
 X_intact, X, missing_mask, indicating_mask = mcar(X, 0.1) # hold out 10% observed values as ground truth
 X = fill_nan_with_mask(X, missing_mask)
 # Model training. This is PyPOTS showtime. 💪
-saits_base = SAITS(seq_len=48, n_features=37, n_layers=2, d_model=256, d_inner=128, n_head=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
+saits_base = SAITS(n_layers=2, d_model=256, d_inner=128, n_head=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
 saits_base.fit(X)  # train the model. Here I use the whole dataset as the training set, because ground truth is not visible to the model.
 imputation = saits_base.impute(X)  # impute the originally-missing values and artificially-missing values
 mae = cal_mae(imputation, X_intact, indicating_mask)  # calculate mean absolute error on the ground truth (artificially-missing values)
@@ -48,16 +48,6 @@ mae = cal_mae(imputation, X_intact, indicating_mask)  # calculate mean absolute 
 
 ## ❖ Repository Structure
 The implementation of SAITS is in dir [`modeling`](https://github.com/WenjieDu/SAITS/blob/master/modeling/SA_models.py). We give configurations of our models in dir [`configs`](https://github.com/WenjieDu/SAITS/tree/master/configs), provide the dataset links and preprocessing scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts). Dir [`NNI_tuning`](https://github.com/WenjieDu/SAITS/tree/master/NNI_tuning) contains the hyper-parameter searching configurations.
-
-## ❖ Implemented Models
-The implemented models in dir [`modeling`](https://github.com/WenjieDu/SAITS/blob/master/modeling) are listed below:
-
-* [MRNN](https://ieeexplore.ieee.org/document/8485748) (in [`modeling/mrnn.py`](https://github.com/WenjieDu/SAITS/blob/master/modeling/mrnn.py#L44))
-* [BRITS](https://papers.nips.cc/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html) (in [`modeling/brits.py`](https://github.com/WenjieDu/SAITS/blob/master/modeling/brits.py#L151))
-* [Transformer](https://papers.nips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html) (in [`modeling/SA_models.py#L28`](https://github.com/WenjieDu/SAITS/blob/master/modeling/SA_models.py#L28))
-* [SAITS](https://arxiv.org/abs/2202.08516) (in [`modeling/SA_models.py#L93`](https://github.com/WenjieDu/SAITS/blob/master/modeling/SA_models.py#L93))
-
-For other baseline models used in the paper, please refer to their GitHub open-source repositories given in their original papers (the links also available in our paper).
 
 ## ❖ Development Environment
 All dependencies of our development environment are listed in file [`conda_env_dependencies.yml`](https://github.com/WenjieDu/SAITS/blob/master/conda_env_dependencies.yml). You can quickly create a
