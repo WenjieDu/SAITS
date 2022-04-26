@@ -1,0 +1,14 @@
+name: Autoreply to Issues Opened for SAITS
+
+on: [issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.ACCESS_TOKEN }}
+        issue-message: "Hi there,<br><br>Thank you so much for your attention to SAITS! If you find SAITS is helpful to your work, please star⭐️ this repository. Your star is your recognition, which can let others notice SAITS. It matters and is definitely a kind of contribution.<br><br>I have received your message and will respond ASAP. Thank you again for your patience! 😃<br><br>Best,<br>Wenjie"
