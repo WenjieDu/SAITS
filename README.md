@@ -68,6 +68,24 @@ mae = cal_mae(imputation, X_intact, indicating_mask)  # calculate mean absolute 
 
 ⦿ **`Performance`**: SAITS outperforms [BRITS](https://papers.nips.cc/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html) by **12% ∼ 38%** in MAE (mean absolute error) and achieves **2.0 ∼ 2.6** times faster training speed. Furthermore, SAITS outperforms Transformer (trained by our joint-optimization approach) by **2% ∼ 13%** in MAE with a more efficient model structure (to obtain comparable performance, SAITS needs only **15% ∼ 30%** parameters of Transformer). Compared to another SOTA self-attention imputation model [NRTSI](https://github.com/lupalab/NRTSI), SAITS achieves **7% ∼ 39%** smaller mean squared error (<ins>above 20% in nine out of sixteen cases</ins>), meanwhile, needs much fewer parameters and less imputation time in practice. Please refer to our [full paper](https://arxiv.org/pdf/2202.08516.pdf) for more details about SAITS' performance.
 
+## ❖ Brief Graphical Illustration of Our Methodology
+Here we only show the two main components of our method: the joint-optimization training approach and SAITS structure. For the detailed description and explanation, please read our [full paper](https://arxiv.org/pdf/2202.08516.pdf).
+
+<!-- <details>
+  <summary><b>👉 Click here to see the figures of our model training approach and SAITS structure 👀</b></summary> -->
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/master/figs/Training approach.svg?sanitize=true" alt="Training approach" title="Training approach" width="800"/>
+
+<b>Fig. 1: Training approach</b>
+
+<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/master/figs/SAITS arch.svg?sanitize=true" alt="SAITS architecture" title="SAITS architecture" width="600"/>
+
+<b>Fig. 2: SAITS structure</b>
+
+</div>
+<!-- </details> -->
+
 ## ❖ Repository Structure
 The implementation of SAITS is in dir [`modeling`](https://github.com/WenjieDu/SAITS/blob/master/modeling/SA_models.py). We give configurations of our models in dir [`configs`](https://github.com/WenjieDu/SAITS/tree/master/configs), provide the dataset links and preprocessing scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts). Dir [`NNI_tuning`](https://github.com/WenjieDu/SAITS/tree/master/NNI_tuning) contains the hyper-parameter searching configurations.
 
@@ -129,4 +147,6 @@ Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of
 </details>
 
 ## ❖ Last but Not Least
-Take a look at [my GitHub homepage](https://github.com/WenjieDu) to know more about me. If you have any additional questions or have interests in collaboration, please feel free to [drop me an email](mailto:wenjay.du@gmail.com) or PM me on [LinkedIn](https://www.linkedin.com/in/wenjie-du/) / [WeChat](https://github.com/PyPOTS/PyPOTS/blob/7e4c0f3acc047c62e46ef5b48d3e5b1d0f5ed236/docs/figs/Wechat_WDU.jpg)! 😃 
+Take a look at [my GitHub homepage](https://github.com/WenjieDu) to know more about me. 😃 
+
+If you have any additional questions or have interests in collaboration, please feel free to [drop me an email](mailto:wenjay.du@gmail.com) or PM me on [LinkedIn](https://www.linkedin.com/in/wenjie-du/) / [WeChat](https://github.com/PyPOTS/PyPOTS/blob/7e4c0f3acc047c62e46ef5b48d3e5b1d0f5ed236/docs/figs/Wechat_WDU.jpg)! 
