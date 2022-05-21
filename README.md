@@ -17,7 +17,7 @@
 
 The official code repository for paper *[SAITS: Self-Attention-based Imputation for Time Series](https://arxiv.org/abs/2202.08516)*. 
 
-**‼️This document <ins>can solve many common questions and help you</ins>, please <ins>read it carefully</ins> before you run the code.**
+**‼️Kind reminder: This document can <ins>solve many common questions and help you</ins>, please <ins>read it carefully</ins> before you run the code.**
 
 > 📣 Attention please<br>
 > SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox for data mining on POTS (Partially-Observed Time Series). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉
@@ -27,34 +27,20 @@ The official code repository for paper *[SAITS: Self-Attention-based Imputation 
 
 ``` python
 # Install PyPOTS first: pip install pypots
+import numpy as np
 from sklearn.preprocessing import StandardScaler
-import pandas as pd
-from pypots.data import load_specific_dataset, mcar, fill_nan_with_mask
+from pypots.data import load_specific_dataset, mcar, masked_fill
 from pypots.imputation import SAITS
 from pypots.utils.metrics import cal_mae
 # Data preprocessing. Tedious, but PyPOTS can help. 🤓
 data = load_specific_dataset('physionet_2012')  # For datasets in PyPOTS database, PyPOTS will automatically download and extract it.
-X = data['X'].drop(data['static_features'], axis=1) # Now we have the raw data, which needs further process
-
-def apply_func(df_temp):  # pad and truncate to set the max length of samples as 48
-    missing = list(set(range(0, 48)).difference(set(df_temp['Time'])))
-    missing_part = pd.DataFrame({'Time': missing})
-    df_temp = df_temp.append(missing_part, ignore_index=False, sort=False) # pad
-    df_temp = df_temp.set_index('Time').sort_index().reset_index()
-    df_temp = df_temp.iloc[:48] # truncate
-    return df_temp
-
-X = X.groupby('RecordID').apply(apply_func)
-X = X.drop('RecordID', axis=1)  # 
-X = X.reset_index()
-X = X.drop(['level_1', 'Time'], axis=1)
-num_samples=len(X['RecordID'].unique())
-X = X.drop('RecordID', axis=1)
+X = data['X']
+num_samples = len(X['RecordID'].unique())
+X = X.drop('RecordID', axis = 1)
 X = StandardScaler().fit_transform(X.to_numpy())
 X = X.reshape(num_samples, 48, -1)
 X_intact, X, missing_mask, indicating_mask = mcar(X, 0.1) # hold out 10% observed values as ground truth
-X = fill_nan_with_mask(X, missing_mask)
-
+X = masked_fill(X, 1 - missing_mask, np.nan)
 # Model training. This is PyPOTS showtime. 💪
 saits = SAITS(n_steps=48, n_features=37, n_layers=2, d_model=256, d_inner=128, n_head=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
 saits.fit(X)  # train the model. Here I use the whole dataset as the training set, because ground truth is not visible to the model.
@@ -102,13 +88,19 @@ Generate the dataset you need first. To do so, please check out the generating s
 After data generation, train and test your model, for example,
 
 ```bash
-# for training
-CUDA_VISIBLE_DEVICES=2 nohup python run_models.py \
+# create a dir to save logs and results
+mkdir NIPS_results
+
+# train a model
+nohup python run_models.py \
     --config_path configs/PhysioNet2012_SAITS_best.ini \
     > NIPS_results/PhysioNet2012_SAITS_best.out &
 
-# for testing
-CUDA_VISIBLE_DEVICES=3 python run_models.py \
+# during training, you can run the blow command to read the training log
+less NIPS_results/PhysioNet2012_SAITS_best.out
+
+# after training, pick the best model and modify the path of the model for testing in the config file, then run the below command to test the model
+python run_models.py \
     --config_path configs/PhysioNet2012_SAITS_best.ini \
     --test_mode
 ```
@@ -121,7 +113,7 @@ If you find SAITS is helpful to your research, please cite our paper as below an
 ```bibtex
 @article{Du2022SAITS,
       title={{SAITS: Self-Attention-based Imputation for Time Series}}, 
-      author={Wenjie Du and David C\^ot\'e and Yan Liu},
+      author={Wenjie Du and David Cote and Yan Liu},
       year={2022},
       eprint={2202.08516},
       archivePrefix={arXiv},
@@ -131,7 +123,7 @@ If you find SAITS is helpful to your research, please cite our paper as below an
 
 or
 
-`Wenjie Du, David Côté, and Yan Liu. "SAITS: Self-Attention-based Imputation for Time Series." ArXiv abs/2202.08516`
+`Wenjie Du, David Cote, and Yan Liu. "SAITS: Self-Attention-based Imputation for Time Series." ArXiv abs/2202.08516`
 
 ## ❖ Acknowledgments
 Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support. Thanks to Ciena for providing computing resources. Thanks to all reviewers for helping improve the quality of this paper. And thank you all for your attention to this work! 
@@ -149,4 +141,4 @@ Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of
 ## ❖ Last but Not Least
 Take a look at [my GitHub homepage](https://github.com/WenjieDu) to know more about me. 😃 
 
-If you have any additional questions or have interests in collaboration, please feel free to [drop me an email](mailto:wenjay.du@gmail.com) or PM me on [LinkedIn](https://www.linkedin.com/in/wenjie-du/) / [WeChat](https://github.com/PyPOTS/PyPOTS/blob/7e4c0f3acc047c62e46ef5b48d3e5b1d0f5ed236/docs/figs/Wechat_WDU.jpg)! 
+If you have any additional questions or have interests in collaboration, please feel free to [drop me an email](mailto:wenjay.du@gmail.com) or PM me on <a alt='LinkedIn' href='https://www.linkedin.com/in/wenjie-du/'><img align='center' src='https://img.shields.io/badge/LinkedIn-Wenjie--Du-blue?style=social&logo=linkedin'></a> / <a alt='WeChat' href='https://github.com/PyPOTS/PyPOTS/blob/7e4c0f3acc047c62e46ef5b48d3e5b1d0f5ed236/docs/figs/Wechat_WDU.jpg'><img align='center' src='https://img.shields.io/badge/WeChat-__W__DU__-blue?style=social&logo=wechat'></a> !
