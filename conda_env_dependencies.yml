@@ -240,4 +240,3 @@ dependencies:
     - tqdm==4.60.0
     - websockets==8.1
     - wrapt==1.12.1
-prefix: /home/tempuser/.conda/envs/SAITS-python38
