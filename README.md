@@ -108,7 +108,7 @@ python run_models.py \
 ❗️Note that paths of datasets and saving dirs may be different on personal computers, please check them in the configuration files.
 
 ## ❖ Reference
-If you find SAITS is helpful to your research, please cite our paper as below and ⭐️star this repository to make other notice our work. 🤗
+If you find SAITS is helpful to your research, please cite our paper as below and ⭐️star this repository to make others notice our work. 🤗
 
 ```bibtex
 @article{Du2022SAITS,

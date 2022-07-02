@@ -29,7 +29,6 @@ dependencies:
   - chardet=3.0.4=py38h924ce5b_1008
   - click=7.1.2=pyh9f0ad1d_0
   - cryptography=3.4.7=py38ha5dfef3_0
-  - cudatoolkit=10.2.89=hfd86e86_1
   - cycler=0.10.0=py_2
   - dbus=1.13.6=h48d8840_2
   - defusedxml=0.7.1=pyhd3eb1b0_0
@@ -159,7 +158,7 @@ dependencies:
   - python=3.8.8=hdb3f193_4
   - python-dateutil=2.8.1=py_0
   - python_abi=3.8=1_cp38
-  - pytorch=1.8.1=py3.8_cuda10.2_cudnn7.6.5_0
+  - pytorch=1.8.1=py3.8
   - pytz=2021.1=pyhd8ed1ab_0
   - pyzmq=20.0.0=py38h2531618_1
   - qt=5.12.9=hda022c4_4
