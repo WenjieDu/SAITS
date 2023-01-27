@@ -15,7 +15,7 @@
   <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
-The official code repository for paper *[SAITS: Self-Attention-based Imputation for Time Series](https://arxiv.org/abs/2202.08516)*. 
+The official code repository for the paper *[SAITS: Self-Attention-based Imputation for Time Series](https://arxiv.org/abs/2202.08516)*, accepted by the journal [Expert Systems With Applications](https://www.sciencedirect.com/journal/expert-systems-with-applications) (2022 IF 8.665, CiteScore 12.2, WoS-Q1, 中科院一区, CCF C类). The publication is under processing ([track it here](https://authors.elsevier.com/tracking/article/details.do?aid=119619&jid=ESWA&surname=Du)), and we will update the reference and DOI once the paper gets published.
 
 **‼️Kind reminder: This document can <ins>solve many common questions and help you</ins>, please <ins>read it carefully</ins> before you run the code.**
 
@@ -139,6 +139,6 @@ Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of
 </details>
 
 ## ❖ Last but Not Least
-Take a look at [my GitHub homepage](https://github.com/WenjieDu) to know more about me. 😃 
+If you have any additional questions or have interests in collaboration, please take a look at [my GitHub profile](https://github.com/WenjieDu) and feel free to contact me 😃. 
 
-If you have any additional questions or have interests in collaboration, please feel free to [drop me an email](mailto:wenjay.du@gmail.com) or ping me on <a alt='LinkedIn' href='https://www.linkedin.com/in/wenjie-du/'><img align='center' src='https://img.shields.io/badge/LinkedIn-Wenjie--Du-blue?style=social&logo=linkedin'></a> / <a alt='WeChat' href='https://github.com/WenjieDu/WenjieDu/blob/main/figs/Wechat_WDU.jpg'><img align='center' src='https://img.shields.io/badge/WeChat-__W__DU__-blue?style=social&logo=wechat'></a> !
+ 
