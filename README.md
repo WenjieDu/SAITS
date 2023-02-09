@@ -15,7 +15,7 @@
   <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
-The official code repository for the paper *[SAITS: Self-Attention-based Imputation for Time Series](https://arxiv.org/abs/2202.08516)*, accepted by the journal [Expert Systems With Applications](https://www.sciencedirect.com/journal/expert-systems-with-applications) (2022 IF 8.665, CiteScore 12.2, WoS-Q1, 中科院一区, CCF C类). The publication is under processing ([track it here](https://authors.elsevier.com/tracking/article/details.do?aid=119619&jid=ESWA&surname=Du)), and we will update the reference and DOI once the paper gets published.
+The official code repository for the paper *[SAITS: Self-Attention-based Imputation for Time Series](https://arxiv.org/abs/2202.08516)*, accepted by the journal [Expert Systems With Applications](https://www.sciencedirect.com/journal/expert-systems-with-applications) (2022 IF 8.665, CiteScore 12.2, WoS-Q1, 中科院一区, CCF C类). The publication is in press ([here are pre-proof and DOI](https://doi.org/10.1016/j.eswa.2023.119619)), and we will update the reference once the paper gets published officially.
 
 **‼️Kind reminder: This document can <ins>solve many common questions and help you</ins>, please <ins>read it carefully</ins> before you run the code.**
 
