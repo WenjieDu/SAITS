@@ -15,12 +15,12 @@
   <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
-The official code repository for the paper *[SAITS: Self-Attention-based Imputation for Time Series](https://arxiv.org/abs/2202.08516)*, accepted by the journal [Expert Systems With Applications](https://www.sciencedirect.com/journal/expert-systems-with-applications) (2022 IF 8.665, CiteScore 12.2, WoS-Q1, 中科院一区, CCF C类). The publication is in press ([here are pre-proof and DOI](https://doi.org/10.1016/j.eswa.2023.119619)), and we will update the reference once the paper gets published officially.
+The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which is accepted by the journal *[Expert Systems With Applications](https://www.sciencedirect.com/journal/expert-systems-with-applications)* (2022 IF 8.665, CiteScore 12.2, WoS-Q1, 中科院一区, CCF C类). 
 
-**‼️Kind reminder: This document can <ins>solve many common questions and help you</ins>, please <ins>read it carefully</ins> before you run the code.**
+**‼️Kind reminder: This document can <ins>solve many common questions and help you</ins>, please read it before you run the code 😊**
 
-> 📣 Attention please<br>
-> SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox for data mining on POTS (Partially-Observed Time Series). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉
+> <a href='https://github.com/WenjieDu/PyPOTS'><img src='https://raw.githubusercontent.com/WenjieDu/PyPOTS/main/docs/figs/PyPOTS%20logo.svg?sanitize=true' width='150' align='right' /></a> 📣 Attention please: <br>
+> SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox for data mining on POTS (Partially-Observed Time Series). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉 
 
 <details>
   <summary><b>👉 Click here to see the example 👀</b></summary>
@@ -52,7 +52,7 @@ mae = cal_mae(imputation, X_intact, indicating_mask)  # calculate mean absolute 
 
 ⦿ **`Motivation`**: SAITS is developed primarily to help overcome the drawbacks (slow speed, memory constraints, and compounding error) of RNN-based imputation models and to obtain the state-of-the-art (SOTA) imputation accuracy on partially-observed time series.
 
-⦿ **`Performance`**: SAITS outperforms [BRITS](https://papers.nips.cc/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html) by **12% ∼ 38%** in MAE (mean absolute error) and achieves **2.0 ∼ 2.6** times faster training speed. Furthermore, SAITS outperforms Transformer (trained by our joint-optimization approach) by **2% ∼ 13%** in MAE with a more efficient model structure (to obtain comparable performance, SAITS needs only **15% ∼ 30%** parameters of Transformer). Compared to another SOTA self-attention imputation model [NRTSI](https://github.com/lupalab/NRTSI), SAITS achieves **7% ∼ 39%** smaller mean squared error (<ins>above 20% in nine out of sixteen cases</ins>), meanwhile, needs much fewer parameters and less imputation time in practice. Please refer to our [full paper](https://arxiv.org/pdf/2202.08516.pdf) for more details about SAITS' performance.
+⦿ **`Performance`**: SAITS outperforms [BRITS](https://papers.nips.cc/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html) by **12% ∼ 38%** in MAE (mean absolute error) and achieves **2.0 ∼ 2.6** times faster training speed. Furthermore, SAITS outperforms Transformer (trained by our joint-optimization approach) by **2% ∼ 19%** in MAE with a more efficient model structure (to obtain comparable performance, SAITS needs only **15% ∼ 30%** parameters of Transformer). Compared to another SOTA self-attention imputation model [NRTSI](https://github.com/lupalab/NRTSI), SAITS achieves **7% ∼ 39%** smaller mean squared error (<ins>above 20% in nine out of sixteen cases</ins>), meanwhile, needs much fewer parameters and less imputation time in practice. Please refer to our [full paper](https://arxiv.org/pdf/2202.08516.pdf) for more details about SAITS' performance.
 
 ## ❖ Brief Graphical Illustration of Our Methodology
 Here we only show the two main components of our method: the joint-optimization training approach and SAITS structure. For the detailed description and explanation, please read our [full paper](https://arxiv.org/pdf/2202.08516.pdf).
@@ -111,24 +111,27 @@ python run_models.py \
 If you find SAITS is helpful to your research, please cite our paper as below and ⭐️star this repository to make others notice our work. 🤗
 
 ```bibtex
-@article{Du2022SAITS,
-      title={{SAITS: Self-Attention-based Imputation for Time Series}}, 
-      author={Wenjie Du and David Cote and Yan Liu},
-      year={2022},
-      eprint={2202.08516},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@article{DU2023SAITS,
+title = {{SAITS: Self-Attention-based Imputation for Time Series}},
+journal = {Expert Systems with Applications},
+volume = {219},
+pages = {119619},
+year = {2023},
+issn = {0957-4174},
+doi = {https://doi.org/10.1016/j.eswa.2023.119619},
+url = {https://www.sciencedirect.com/science/article/pii/S0957417423001203},
+author = {Wenjie Du and David Cote and Yan Liu},
 }
 ```
 
 or
 
-`Wenjie Du, David Cote, and Yan Liu. "SAITS: Self-Attention-based Imputation for Time Series." ArXiv abs/2202.08516`
+`Wenjie Du, David Cote, and Yan Liu. SAITS: Self-Attention-based Imputation for Time Series. Expert Systems with Applications, 219:119619, 2023.`
 
 ## ❖ Acknowledgments
-Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support. Thanks to Ciena for providing computing resources. Thanks to all reviewers for helping improve the quality of this paper. And thank you all for your attention to this work! 
+Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support. Thanks to Ciena for providing computing resources. Thanks to all reviewers for helping improve the quality of this paper. And thank you all for your attention to this work! ❤️
 
-✨ Stars/forks/issues/PRs are all welcome!
+✨ **Stars / forks / issues / PRs are all welcome!**
 
 <details open>
 <summary><b><i>👏 Click to View Stargazers and Forkers: </i></b></summary>
@@ -139,6 +142,4 @@ Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of
 </details>
 
 ## ❖ Last but Not Least
-If you have any additional questions or have interests in collaboration, please take a look at [my GitHub profile](https://github.com/WenjieDu) and feel free to contact me 😃. 
-
- 
+If you have any additional questions or have interests in collaboration, please take a look at [my GitHub profile](https://github.com/WenjieDu) and feel free to contact me😃. 
