@@ -15,9 +15,9 @@
   <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
-The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which is accepted by the journal *[Expert Systems With Applications](https://www.sciencedirect.com/journal/expert-systems-with-applications)* (2022 IF 8.665, CiteScore 12.2, WoS-Q1, 中科院一区, CCF C类). 
+The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal *[Expert Systems With Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)* [2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1 (中科院-1区), CCF-C]. Some of you may never hear about ESWA, but this journal was ranked the 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 ([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), and [here](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) is the current ranking list for your information.
 
-**‼️Kind reminder: This document can <ins>solve many common questions and help you</ins>, please read it before you run the code 😊**
+**‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code 😊**
 
 > <a href='https://github.com/WenjieDu/PyPOTS'><img src='https://raw.githubusercontent.com/WenjieDu/PyPOTS/main/docs/figs/PyPOTS%20logo.svg?sanitize=true' width='150' align='right' /></a> 📣 Attention please: <br>
 > SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox for data mining on POTS (Partially-Observed Time Series). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉 
@@ -131,7 +131,7 @@ or
 ## ❖ Acknowledgments
 Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support. Thanks to Ciena for providing computing resources. Thanks to all reviewers for helping improve the quality of this paper. And thank you all for your attention to this work! ❤️
 
-✨ **Stars / forks / issues / PRs are all welcome!**
+#### ✨Stars/forks/issues/PRs are all welcome!
 
 <details open>
 <summary><b><i>👏 Click to View Stargazers and Forkers: </i></b></summary>
