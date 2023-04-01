@@ -15,7 +15,7 @@
   <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
-The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal *[Expert Systems With Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)* [2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1 (中科院-1区), CCF-C]. Some of you may never hear about ESWA, but this journal was ranked the 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 ([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), and [here](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) is the current ranking list for your information.
+The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal *[Expert Systems With Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)* [2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1 (中科院-1区), CCF-C]. Some of you may never hear about ESWA, while this journal was ranked the 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 ([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), and [here](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) is the current ranking list for your information.
 
 **‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code 😊**
 
@@ -26,7 +26,7 @@ The official code repository for the paper [SAITS: Self-Attention-based Imputati
   <summary><b>👉 Click here to see the example 👀</b></summary>
 
 ``` python
-# Install PyPOTS first: pip install pypots
+# Install PyPOTS first: pip install pypots>=0.0.10
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from pypots.data import load_specific_dataset, mcar, masked_fill
@@ -43,8 +43,9 @@ X_intact, X, missing_mask, indicating_mask = mcar(X, 0.1) # hold out 10% observe
 X = masked_fill(X, 1 - missing_mask, np.nan)
 # Model training. This is PyPOTS showtime. 💪
 saits = SAITS(n_steps=48, n_features=37, n_layers=2, d_model=256, d_inner=128, n_head=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
-saits.fit(X)  # train the model. Here I use the whole dataset as the training set, because ground truth is not visible to the model.
-imputation = saits.impute(X)  # impute the originally-missing values and artificially-missing values
+dataset = {"X": X}
+saits.fit(dataset)  # train the model. Here I use the whole dataset as the training set, because ground truth is not visible to the model.
+imputation = saits.impute(dataset)  # impute the originally-missing values and artificially-missing values
 mae = cal_mae(imputation, X_intact, indicating_mask)  # calculate mean absolute error on the ground truth (artificially-missing values)
 ```
 
