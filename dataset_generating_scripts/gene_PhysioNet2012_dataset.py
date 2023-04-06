@@ -81,7 +81,7 @@ if __name__ == '__main__':
         if df_temp.shape[0] != 48:
             missing = list(set(range(0, 48)).difference(set(df_temp['Time'])))
             missing_part = pd.DataFrame({'Time': missing})
-            df_temp = df_temp.append(missing_part, ignore_index=False, sort=False)
+            df_temp = pd.concat([df_temp, missing_part], ignore_index=False, sort=False)
             df_temp = df_temp.set_index('Time').sort_index().reset_index()
         df_temp = df_temp.iloc[:48]  # only take 48 hours, some samples may have more records, like 49 hours
         df_temp['RecordID'] = recordID
