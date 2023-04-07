@@ -6,11 +6,15 @@ from configparser import ConfigParser, ExtendedInterpolation
 from datetime import datetime
 
 import h5py
-import nni
 import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
+
+try:
+    import nni
+except ImportError:
+    pass
 
 from Global_Config import RANDOM_SEED
 from modeling.SA_models import SAITS, TransformerEncoder
