@@ -1,6 +1,6 @@
 <p align="center">
     <a id="SAITS" href="#SAITS">
-        <img src="https://raw.githubusercontent.com/WenjieDu/SAITS/master/figs/SAITS full title.svg?sanitize=true" alt="SAITS Title" title="SAITS Title" width="600"/>
+        <img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/SAITS full title.jpg" alt="SAITS Title" title="SAITS Title" width="600"/>
     </a>
 </p>
 
@@ -18,7 +18,15 @@
     <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
-The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal *[Expert Systems With Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)* [2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1 (中科院-1区), CCF-C]. Some of you may never heard of ESWA, while this journal was ranked 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 ([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), and [here](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) is the current ranking list for your information. Please star🌟 this repo to help others notice SAITS if you think it is useful. Thank you! 
+The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) 
+(preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal
+*[Expert Systems With Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)*
+[2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1 (中科院-1区), CCF-C]. You may never hear of ESWA, 
+while this journal was ranked 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 
+([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), 
+and [here](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) is the current ranking list for your information. 
+
+Please star🌟 this repo to help others notice SAITS if you think it is useful. It really means a lot to my open-source work. Thank you! 
 
 **‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code 😊**
 
@@ -54,22 +62,31 @@ mae = cal_mae(imputation, X_intact, indicating_mask)  # calculate mean absolute 
 
 </details>
 
-⦿ **`Motivation`**: SAITS is developed primarily to help overcome the drawbacks (slow speed, memory constraints, and compounding error) of RNN-based imputation models and to obtain the state-of-the-art (SOTA) imputation accuracy on partially-observed time series.
+⦿ **`Motivation`**: SAITS is developed primarily to help overcome the drawbacks (slow speed, memory constraints, and compounding error)
+of RNN-based imputation models and to obtain the state-of-the-art (SOTA) imputation accuracy on partially-observed time series.
 
-⦿ **`Performance`**: SAITS outperforms [BRITS](https://papers.nips.cc/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html) by **12% ∼ 38%** in MAE (mean absolute error) and achieves **2.0 ∼ 2.6** times faster training speed. Furthermore, SAITS outperforms Transformer (trained by our joint-optimization approach) by **2% ∼ 19%** in MAE with a more efficient model structure (to obtain comparable performance, SAITS needs only **15% ∼ 30%** parameters of Transformer). Compared to another SOTA self-attention imputation model [NRTSI](https://github.com/lupalab/NRTSI), SAITS achieves **7% ∼ 39%** smaller mean squared error (<ins>above 20% in nine out of sixteen cases</ins>), meanwhile, needs much fewer parameters and less imputation time in practice. Please refer to our [full paper](https://arxiv.org/pdf/2202.08516.pdf) for more details about SAITS' performance.
+⦿ **`Performance`**: SAITS outperforms [BRITS](https://papers.nips.cc/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html)
+by **12% ∼ 38%** in MAE (mean absolute error) and achieves **2.0 ∼ 2.6** times faster training speed.
+Furthermore, SAITS outperforms Transformer (trained by our joint-optimization approach) by **2% ∼ 19%** in MAE with a
+more efficient model structure (to obtain comparable performance, SAITS needs only **15% ∼ 30%** parameters of Transformer).
+Compared to another SOTA self-attention imputation model [NRTSI](https://github.com/lupalab/NRTSI), SAITS achieves
+**7% ∼ 39%** smaller mean squared error (<ins>above 20% in nine out of sixteen cases</ins>), meanwhile, needs much
+fewer parameters and less imputation time in practice. 
+Please refer to our [full paper](https://arxiv.org/pdf/2202.08516.pdf) for more details about SAITS' performance.
 
 ## ❖ Brief Graphical Illustration of Our Methodology
-Here we only show the two main components of our method: the joint-optimization training approach and SAITS structure. For the detailed description and explanation, please read our [full paper](https://arxiv.org/pdf/2202.08516.pdf).
+Here we only show the two main components of our method: the joint-optimization training approach and SAITS structure.
+For the detailed description and explanation, please read our [full paper](https://arxiv.org/pdf/2202.08516.pdf).
 
 <!-- <details>
   <summary><b>👉 Click here to see the figures of our model training approach and SAITS structure 👀</b></summary> -->
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/master/figs/Training approach.svg?sanitize=true" alt="Training approach" title="Training approach" width="800"/>
+<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/Training approach.svg?sanitize=true" alt="Training approach" title="Training approach" width="800"/>
 
 <b>Fig. 1: Training approach</b>
 
-<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/master/figs/SAITS arch.svg?sanitize=true" alt="SAITS architecture" title="SAITS architecture" width="600"/>
+<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/SAITS arch.svg?sanitize=true" alt="SAITS architecture" title="SAITS architecture" width="600"/>
 
 <b>Fig. 2: SAITS structure</b>
 
@@ -77,17 +94,22 @@ Here we only show the two main components of our method: the joint-optimization 
 <!-- </details> -->
 
 ## ❖ Repository Structure
-The implementation of SAITS is in dir [`modeling`](https://github.com/WenjieDu/SAITS/blob/master/modeling/SA_models.py). We give configurations of our models in dir [`configs`](https://github.com/WenjieDu/SAITS/tree/master/configs), provide the dataset links and preprocessing scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts). Dir [`NNI_tuning`](https://github.com/WenjieDu/SAITS/tree/master/NNI_tuning) contains the hyper-parameter searching configurations.
+The implementation of SAITS is in dir [`modeling`](https://github.com/WenjieDu/SAITS/blob/main/modeling/SA_models.py).
+We give configurations of our models in dir [`configs`](https://github.com/WenjieDu/SAITS/tree/main/configs), provide
+the dataset links and preprocessing scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/main/dataset_generating_scripts).
+Dir [`NNI_tuning`](https://github.com/WenjieDu/SAITS/tree/main/NNI_tuning) contains the hyper-parameter searching configurations.
 
 ## ❖ Development Environment
-All dependencies of our development environment are listed in file [`conda_env_dependencies.yml`](https://github.com/WenjieDu/SAITS/blob/master/conda_env_dependencies.yml). You can quickly create a
-usable python environment with an anaconda command `conda env create -f conda_env_dependencies.yml`.
+All dependencies of our development environment are listed in file [`conda_env_dependencies.yml`](https://github.com/WenjieDu/SAITS/blob/main/conda_env_dependencies.yml).
+You can quickly create a usable python environment with an anaconda command `conda env create -f conda_env_dependencies.yml`.
 
 ## ❖ Datasets
-For datasets downloading and generating, please check out the scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts).
+For datasets downloading and generating, please check out the scripts in 
+dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/main/dataset_generating_scripts).
 
 ## ❖ Quick Run
-Generate the dataset you need first. To do so, please check out the generating scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts).
+Generate the dataset you need first. To do so, please check out the generating scripts in 
+dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/main/dataset_generating_scripts).
 
 After data generation, train and test your model, for example,
 
@@ -112,7 +134,8 @@ python run_models.py \
 ❗️Note that paths of datasets and saving dirs may be different on personal computers, please check them in the configuration files.
 
 ## ❖ Reference
-If you find SAITS is helpful to your research, please cite our paper as below, ⭐️star this repository and recommend it to others who you think may need it. 🤗
+If you find SAITS is helpful to your research, please cite our paper as below, 
+⭐️star this repository, and recommend it to others who you think may need it. 🤗
 
 ```bibtex
 @article{DU2023SAITS,
@@ -133,7 +156,10 @@ or
 `Wenjie Du, David Cote, and Yan Liu. SAITS: Self-Attention-based Imputation for Time Series. Expert Systems with Applications, 219:119619, 2023.`
 
 ## ❖ Acknowledgments
-Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support. Thanks to Ciena for providing computing resources. Thanks to all reviewers for helping improve the quality of this paper. And thank you all for your attention to this work! ❤️
+Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support.
+Thanks to Ciena for providing computing resources.
+Thanks to all our reviewers for helping improve the quality of this paper.
+And thank you all for your attention to this work! ❤️
 
 ### ✨Stars/forks/issues/PRs are all welcome!
 
@@ -146,4 +172,5 @@ Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of
 </details>
 
 ## ❖ Last but Not Least
-If you have any additional questions or have interests in collaboration, please take a look at [my GitHub profile](https://github.com/WenjieDu) and feel free to contact me😃. 
+If you have any additional questions or have interests in collaboration, 
+please take a look at [my GitHub profile](https://github.com/WenjieDu) and feel free to contact me😃.
