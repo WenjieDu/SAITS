@@ -1,6 +1,6 @@
 <p align="center">
     <a id="SAITS" href="#SAITS">
-        <img src="https://raw.githubusercontent.com/WenjieDu/SAITS/master/figs/SAITS full title.jpg" alt="SAITS Title" title="SAITS Title" width="600"/>
+        <img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/SAITS full title.jpg" alt="SAITS Title" title="SAITS Title" width="600"/>
     </a>
 </p>
 
@@ -82,11 +82,11 @@ For the detailed description and explanation, please read our [full paper](https
   <summary><b>👉 Click here to see the figures of our model training approach and SAITS structure 👀</b></summary> -->
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/master/figs/Training approach.svg?sanitize=true" alt="Training approach" title="Training approach" width="800"/>
+<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/Training approach.svg?sanitize=true" alt="Training approach" title="Training approach" width="800"/>
 
 <b>Fig. 1: Training approach</b>
 
-<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/master/figs/SAITS arch.svg?sanitize=true" alt="SAITS architecture" title="SAITS architecture" width="600"/>
+<img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/SAITS arch.svg?sanitize=true" alt="SAITS architecture" title="SAITS architecture" width="600"/>
 
 <b>Fig. 2: SAITS structure</b>
 
@@ -94,22 +94,22 @@ For the detailed description and explanation, please read our [full paper](https
 <!-- </details> -->
 
 ## ❖ Repository Structure
-The implementation of SAITS is in dir [`modeling`](https://github.com/WenjieDu/SAITS/blob/master/modeling/SA_models.py).
-We give configurations of our models in dir [`configs`](https://github.com/WenjieDu/SAITS/tree/master/configs), provide
-the dataset links and preprocessing scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts).
-Dir [`NNI_tuning`](https://github.com/WenjieDu/SAITS/tree/master/NNI_tuning) contains the hyper-parameter searching configurations.
+The implementation of SAITS is in dir [`modeling`](https://github.com/WenjieDu/SAITS/blob/main/modeling/SA_models.py).
+We give configurations of our models in dir [`configs`](https://github.com/WenjieDu/SAITS/tree/main/configs), provide
+the dataset links and preprocessing scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/main/dataset_generating_scripts).
+Dir [`NNI_tuning`](https://github.com/WenjieDu/SAITS/tree/main/NNI_tuning) contains the hyper-parameter searching configurations.
 
 ## ❖ Development Environment
-All dependencies of our development environment are listed in file [`conda_env_dependencies.yml`](https://github.com/WenjieDu/SAITS/blob/master/conda_env_dependencies.yml).
+All dependencies of our development environment are listed in file [`conda_env_dependencies.yml`](https://github.com/WenjieDu/SAITS/blob/main/conda_env_dependencies.yml).
 You can quickly create a usable python environment with an anaconda command `conda env create -f conda_env_dependencies.yml`.
 
 ## ❖ Datasets
 For datasets downloading and generating, please check out the scripts in 
-dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts).
+dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/main/dataset_generating_scripts).
 
 ## ❖ Quick Run
 Generate the dataset you need first. To do so, please check out the generating scripts in 
-dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/master/dataset_generating_scripts).
+dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/main/dataset_generating_scripts).
 
 After data generation, train and test your model, for example,
 
