@@ -24,7 +24,12 @@ The official code repository for the paper [SAITS: Self-Attention-based Imputati
 [2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1 (中科院-1区), CCF-C]. You may never hear of ESWA, 
 while this journal was ranked 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 
 ([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), 
-and [here](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) is the current ranking list for your information. 
+and [here is the current ranking list](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) for your information.
+
+SAITS is the first work applying pure self-attention and without any recursive design in the algorithm for general time series imputation.
+Basically you can take it as a validated framework for time series imputation. More generally, you can use it for sequence imputation. 
+Of course, it probably needs a bit of modification in the model structure or loss functions for specific purpose or data input. 
+Therefore, you're welcome to modify SAITS for your own research purpose and domain applications.
 
 Please star🌟 this repo to help others notice SAITS if you think it is useful. It really means a lot to my open-source work. Thank you! 
 
