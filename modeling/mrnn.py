@@ -1,3 +1,29 @@
+"""
+Our implementation of MRNN model for time-series imputation.
+
+If you use code in this repository, please cite our paper as below. Many thanks.
+
+@article{DU2023SAITS,
+title = {{SAITS: Self-Attention-based Imputation for Time Series}},
+journal = {Expert Systems with Applications},
+volume = {219},
+pages = {119619},
+year = {2023},
+issn = {0957-4174},
+doi = {https://doi.org/10.1016/j.eswa.2023.119619},
+url = {https://www.sciencedirect.com/science/article/pii/S0957417423001203},
+author = {Wenjie Du and David Cote and Yan Liu},
+}
+
+or
+
+Wenjie Du, David Cote, and Yan Liu. SAITS: Self-Attention-based Imputation for Time Series. Expert Systems with Applications, 219:119619, 2023. https://doi.org/10.1016/j.eswa.2023.119619
+"""
+
+# Created by Wenjie Du <wenjay.du@gmail.com>
+# License: GLP-v3
+
+
 import math
 
 import torch
@@ -20,11 +46,11 @@ class FCN_Regression(nn.Module):
         self.final_linear = nn.Linear(feature_num, feature_num)
 
         m = torch.ones(feature_num, feature_num) - torch.eye(feature_num, feature_num)
-        self.register_buffer('m', m)
+        self.register_buffer("m", m)
         self.reset_parameters()
 
     def reset_parameters(self):
-        stdv = 1. / math.sqrt(self.U.size(0))
+        stdv = 1.0 / math.sqrt(self.U.size(0))
         self.U.data.uniform_(-stdv, stdv)
         self.V1.data.uniform_(-stdv, stdv)
         self.V2.data.uniform_(-stdv, stdv)
@@ -32,10 +58,10 @@ class FCN_Regression(nn.Module):
 
     def forward(self, x_t, m_t, target):
         h_t = F.tanh(
-            F.linear(x_t, self.U * self.m) +
-            F.linear(target, self.V1 * self.m) +
-            F.linear(m_t, self.V2) +
-            self.beta
+            F.linear(x_t, self.U * self.m)
+            + F.linear(target, self.V1 * self.m)
+            + F.linear(m_t, self.V2)
+            + self.beta
         )
         x_hat_t = self.final_linear(h_t)
         return x_hat_t
@@ -48,22 +74,25 @@ class MRNN(nn.Module):
         self.seq_len = seq_len
         self.feature_num = feature_num
         self.rnn_hidden_size = rnn_hidden_size
-        self.device = kwargs['device']
+        self.device = kwargs["device"]
 
         self.f_rnn = nn.GRUCell(self.feature_num * 3, self.rnn_hidden_size)
         self.b_rnn = nn.GRUCell(self.feature_num * 3, self.rnn_hidden_size)
-        self.rnn_cells = {'forward': self.f_rnn,
-                          'backward': self.b_rnn}
-        self.concated_hidden_project = nn.Linear(self.rnn_hidden_size * 2, self.feature_num)
+        self.rnn_cells = {"forward": self.f_rnn, "backward": self.b_rnn}
+        self.concated_hidden_project = nn.Linear(
+            self.rnn_hidden_size * 2, self.feature_num
+        )
         self.fcn_regression = FCN_Regression(feature_num, rnn_hidden_size)
 
     def gene_hidden_states(self, data, direction):
-        values = data[direction]['X']
-        masks = data[direction]['missing_mask']
-        deltas = data[direction]['deltas']
+        values = data[direction]["X"]
+        masks = data[direction]["missing_mask"]
+        deltas = data[direction]["deltas"]
 
         hidden_states_collector = []
-        hidden_state = torch.zeros((values.size()[0], self.rnn_hidden_size), device=self.device)
+        hidden_state = torch.zeros(
+            (values.size()[0], self.rnn_hidden_size), device=self.device
+        )
 
         for t in range(self.seq_len):
             x = values[:, t, :]
@@ -75,15 +104,17 @@ class MRNN(nn.Module):
         return hidden_states_collector
 
     def impute(self, data):
-        hidden_states_f = self.gene_hidden_states(data, 'forward')
-        hidden_states_b = self.gene_hidden_states(data, 'backward')[::-1]
+        hidden_states_f = self.gene_hidden_states(data, "forward")
+        hidden_states_b = self.gene_hidden_states(data, "backward")[::-1]
 
-        values = data['forward']['X']
-        masks = data['forward']['missing_mask']
+        values = data["forward"]["X"]
+        masks = data["forward"]["missing_mask"]
 
         reconstruction_loss = 0
         estimations = []
-        for i in range(self.seq_len):  # calculating estimation loss for times can obtain better results than once
+        for i in range(
+            self.seq_len
+        ):  # calculating estimation loss for times can obtain better results than once
             x = values[:, i, :]
             m = masks[:, i, :]
             h_f = hidden_states_f[i]
@@ -91,8 +122,12 @@ class MRNN(nn.Module):
             h = torch.cat([h_f, h_b], dim=1)
             RNN_estimation = self.concated_hidden_project(h)  # x̃_t
             RNN_imputed_data = m * x + (1 - m) * RNN_estimation
-            FCN_estimation = self.fcn_regression(x, m, RNN_imputed_data)  # FCN estimation is output extimation
-            reconstruction_loss += masked_rmse_cal(FCN_estimation, x, m) + masked_rmse_cal(RNN_estimation, x, m)
+            FCN_estimation = self.fcn_regression(
+                x, m, RNN_imputed_data
+            )  # FCN estimation is output extimation
+            reconstruction_loss += masked_rmse_cal(
+                FCN_estimation, x, m
+            ) + masked_rmse_cal(RNN_estimation, x, m)
             estimations.append(FCN_estimation.unsqueeze(dim=1))
 
         estimations = torch.cat(estimations, dim=1)
@@ -100,24 +135,28 @@ class MRNN(nn.Module):
         return imputed_data, [estimations, reconstruction_loss]
 
     def forward(self, data, stage):
-        values = data['forward']['X']
-        masks = data['forward']['missing_mask']
+        values = data["forward"]["X"]
+        masks = data["forward"]["missing_mask"]
         imputed_data, [estimations, reconstruction_loss] = self.impute(data)
         reconstruction_loss /= self.seq_len
         reconstruction_MAE = masked_mae_cal(estimations.detach(), values, masks)
 
-        if stage == 'val':
+        if stage == "val":
             # have to cal imputation loss in the val stage; no need to cal imputation loss here in the test stage
-            imputation_MAE = masked_mae_cal(imputed_data, data['X_holdout'], data['indicating_mask'])
+            imputation_MAE = masked_mae_cal(
+                imputed_data, data["X_holdout"], data["indicating_mask"]
+            )
         else:
             imputation_MAE = torch.tensor(0.0)
 
         ret_dict = {
-            'reconstruction_loss': reconstruction_loss, 'reconstruction_MAE': reconstruction_MAE,
-            'imputation_loss': imputation_MAE, 'imputation_MAE': imputation_MAE,
-            'imputed_data': imputed_data,
+            "reconstruction_loss": reconstruction_loss,
+            "reconstruction_MAE": reconstruction_MAE,
+            "imputation_loss": imputation_MAE,
+            "imputation_MAE": imputation_MAE,
+            "imputed_data": imputed_data,
         }
-        if 'X_holdout' in data:
-            ret_dict['X_holdout'] = data['X_holdout']
-            ret_dict['indicating_mask'] = data['indicating_mask']
+        if "X_holdout" in data:
+            ret_dict["X_holdout"] = data["X_holdout"]
+            ret_dict["indicating_mask"] = data["indicating_mask"]
         return ret_dict
