@@ -22,7 +22,7 @@ Wenjie Du, David Cote, and Yan Liu. SAITS: Self-Attention-based Imputation for T
 """
 
 # Created by Wenjie Du <wenjay.du@gmail.com>
-# License: GLP-v3
+# License: MIT
 
 
 RANDOM_SEED = 26
