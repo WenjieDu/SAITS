@@ -3,14 +3,25 @@ message: "If you use code from this repository, please cite it as below."
 authors:
 - family-names: "Du"
   given-names: "Wenjie"
-  orcid: "https://orcid.org/0000-0003-3046-7835"
-- family-names: "Cote"
-  given-names: "David"
-  orcid: "https://orcid.org/0000-0001-7468-0430"
-- family-names: "Liu"
-  given-names: "Yan"
-  orcid: "https://orcid.org/0000-0002-6747-8151"
-type: article
 title: "SAITS: Self-Attention-based Imputation for Time Series"
-doi: 10.48550/arXiv.2202.08516
-url: https://doi.org/10.48550/arXiv.2202.08516
+
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Du"
+    given-names: "Wenjie"
+    orcid: "https://orcid.org/0000-0003-3046-7835"
+  - family-names: "Cote"
+    given-names: "David"
+    orcid: "https://orcid.org/0000-0001-7468-0430"
+  - family-names: "Liu"
+    given-names: "Yan"
+    orcid: "https://orcid.org/0000-0002-6747-8151"
+  doi: "10.1016/j.eswa.2023.119619"
+  journal: "Expert Systems with Applications"
+  month: 6
+  start: 119619
+  title: "SAITS: Self-Attention-based Imputation for Time Series"
+  volume: 219
+  year: 2023
+  url: https://www.sciencedirect.com/science/article/pii/S0957417423001203
