@@ -1,6 +1,33 @@
+"""
+Layer modules for self-attention models (Transformer and SAITS).
+
+If you use code in this repository, please cite our paper as below. Many thanks.
+
+@article{DU2023SAITS,
+title = {{SAITS: Self-Attention-based Imputation for Time Series}},
+journal = {Expert Systems with Applications},
+volume = {219},
+pages = {119619},
+year = {2023},
+issn = {0957-4174},
+doi = {https://doi.org/10.1016/j.eswa.2023.119619},
+url = {https://www.sciencedirect.com/science/article/pii/S0957417423001203},
+author = {Wenjie Du and David Cote and Yan Liu},
+}
+
+or
+
+Wenjie Du, David Cote, and Yan Liu. SAITS: Self-Attention-based Imputation for Time Series. Expert Systems with Applications, 219:119619, 2023. https://doi.org/10.1016/j.eswa.2023.119619
+"""
+
+# Created by Wenjie Du <wenjay.du@gmail.com>
+# License: GLP-v3
+
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import numpy as np
 
 
 class ScaledDotProductAttention(nn.Module):
@@ -34,7 +61,7 @@ class MultiHeadAttention(nn.Module):
         self.w_ks = nn.Linear(d_model, n_head * d_k, bias=False)
         self.w_vs = nn.Linear(d_model, n_head * d_v, bias=False)
 
-        self.attention = ScaledDotProductAttention(d_k ** 0.5, attn_dropout)
+        self.attention = ScaledDotProductAttention(d_k**0.5, attn_dropout)
         self.fc = nn.Linear(n_head * d_v, d_model, bias=False)
 
     def forward(self, q, k, v, attn_mask=None):
@@ -52,7 +79,9 @@ class MultiHeadAttention(nn.Module):
 
         if attn_mask is not None:
             # this mask is imputation mask, which is not generated from each batch, so needs broadcasting on batch dim
-            attn_mask = attn_mask.unsqueeze(0).unsqueeze(1)  # For batch and head axis broadcasting.
+            attn_mask = attn_mask.unsqueeze(0).unsqueeze(
+                1
+            )  # For batch and head axis broadcasting.
 
         v, attn_weights = self.attention(q, k, v, attn_mask)
 
@@ -81,11 +110,23 @@ class PositionWiseFeedForward(nn.Module):
 
 
 class EncoderLayer(nn.Module):
-    def __init__(self, d_time, d_feature, d_model, d_inner, n_head, d_k, d_v, dropout=0.1, attn_dropout=0.1, **kwargs):
+    def __init__(
+        self,
+        d_time,
+        d_feature,
+        d_model,
+        d_inner,
+        n_head,
+        d_k,
+        d_v,
+        dropout=0.1,
+        attn_dropout=0.1,
+        **kwargs
+    ):
         super(EncoderLayer, self).__init__()
 
-        self.diagonal_attention_mask = kwargs['diagonal_attention_mask']
-        self.device = kwargs['device']
+        self.diagonal_attention_mask = kwargs["diagonal_attention_mask"]
+        self.device = kwargs["device"]
         self.d_time = d_time
         self.d_feature = d_feature
 
@@ -103,9 +144,39 @@ class EncoderLayer(nn.Module):
         residual = enc_input
         # here we apply LN before attention cal, namely Pre-LN, refer paper https://arxiv.org/abs/2002.04745
         enc_input = self.layer_norm(enc_input)
-        enc_output, attn_weights = self.slf_attn(enc_input, enc_input, enc_input, attn_mask=mask_time)
+        enc_output, attn_weights = self.slf_attn(
+            enc_input, enc_input, enc_input, attn_mask=mask_time
+        )
         enc_output = self.dropout(enc_output)
         enc_output += residual
 
         enc_output = self.pos_ffn(enc_output)
         return enc_output, attn_weights
+
+
+class PositionalEncoding(nn.Module):
+    def __init__(self, d_hid, n_position=200):
+        super(PositionalEncoding, self).__init__()
+        # Not a parameter
+        self.register_buffer(
+            "pos_table", self._get_sinusoid_encoding_table(n_position, d_hid)
+        )
+
+    def _get_sinusoid_encoding_table(self, n_position, d_hid):
+        """Sinusoid position encoding table"""
+
+        def get_position_angle_vec(position):
+            return [
+                position / np.power(10000, 2 * (hid_j // 2) / d_hid)
+                for hid_j in range(d_hid)
+            ]
+
+        sinusoid_table = np.array(
+            [get_position_angle_vec(pos_i) for pos_i in range(n_position)]
+        )
+        sinusoid_table[:, 0::2] = np.sin(sinusoid_table[:, 0::2])  # dim 2i
+        sinusoid_table[:, 1::2] = np.cos(sinusoid_table[:, 1::2])  # dim 2i+1
+        return torch.FloatTensor(sinusoid_table).unsqueeze(0)
+
+    def forward(self, x):
+        return x + self.pos_table[:, : x.size(1)].clone().detach()
