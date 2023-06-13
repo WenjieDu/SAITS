@@ -20,7 +20,7 @@
 
 The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) 
 (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal
-*[Expert Systems With Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)*
+*[Expert Systems with Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)*
 [2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1 (中科院-1区), CCF-C]. You may never hear of ESWA, 
 while this journal was ranked 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 
 ([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), 
@@ -28,8 +28,8 @@ and [here is the current ranking list](https://scholar.google.com/citations?view
 
 SAITS is the first work applying pure self-attention and without any recursive design in the algorithm for general time series imputation.
 Basically you can take it as a validated framework for time series imputation. More generally, you can use it for sequence imputation. 
-Of course, it probably needs a bit of modification in the model structure or loss functions for specific purpose or data input. 
 Therefore, you're welcome to modify SAITS for your own research purpose and domain applications.
+Of course, it probably needs a bit of modification in the model structure or loss functions for specific scenarios or data input.
 
 Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps your research.
 Please star🌟 this repo to help others notice SAITS if you think it is useful. 
@@ -45,7 +45,7 @@ BTW, you may also like [PyPOTS](https://github.com/WenjieDu/PyPOTS) for easily m
   <summary><b>👉 Click here to see the example 👀</b></summary>
 
 ``` python
-# Install PyPOTS first: pip install pypots>=0.0.10
+# Install PyPOTS first: pip install pypots==0.1.1
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from pypots.data import load_specific_dataset, mcar, masked_fill
@@ -70,6 +70,8 @@ mae = cal_mae(imputation, X_intact, indicating_mask)  # calculate mean absolute 
 
 </details>
 
+
+## ❖ Motivation and Performance
 ⦿ **`Motivation`**: SAITS is developed primarily to help overcome the drawbacks (slow speed, memory constraints, and compounding error)
 of RNN-based imputation models and to obtain the state-of-the-art (SOTA) imputation accuracy on partially-observed time series.
 
@@ -101,19 +103,46 @@ For the detailed description and explanation, please read our [full paper](https
 </div>
 <!-- </details> -->
 
+
+## ❖ Citing SAITS
+If you find SAITS is helpful to your research, please cite our paper as below, 
+⭐️star this repository, and recommend it to others who you think may need it. 🤗 Thank you!
+
+```bibtex
+@article{DU2023SAITS,
+title = {{SAITS: Self-Attention-based Imputation for Time Series}},
+journal = {Expert Systems with Applications},
+volume = {219},
+pages = {119619},
+year = {2023},
+issn = {0957-4174},
+doi = {https://doi.org/10.1016/j.eswa.2023.119619},
+url = {https://www.sciencedirect.com/science/article/pii/S0957417423001203},
+author = {Wenjie Du and David Cote and Yan Liu},
+}
+```
+
+or
+
+`Wenjie Du, David Cote, and Yan Liu. SAITS: Self-Attention-based Imputation for Time Series. Expert Systems with Applications, 219:119619, 2023.`
+
+
 ## ❖ Repository Structure
 The implementation of SAITS is in dir [`modeling`](https://github.com/WenjieDu/SAITS/blob/main/modeling/SA_models.py).
 We give configurations of our models in dir [`configs`](https://github.com/WenjieDu/SAITS/tree/main/configs), provide
 the dataset links and preprocessing scripts in dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/main/dataset_generating_scripts).
 Dir [`NNI_tuning`](https://github.com/WenjieDu/SAITS/tree/main/NNI_tuning) contains the hyper-parameter searching configurations.
 
+
 ## ❖ Development Environment
 All dependencies of our development environment are listed in file [`conda_env_dependencies.yml`](https://github.com/WenjieDu/SAITS/blob/main/conda_env_dependencies.yml).
 You can quickly create a usable python environment with an anaconda command `conda env create -f conda_env_dependencies.yml`.
 
+
 ## ❖ Datasets
 For datasets downloading and generating, please check out the scripts in 
 dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/main/dataset_generating_scripts).
+
 
 ## ❖ Quick Run
 Generate the dataset you need first. To do so, please check out the generating scripts in 
@@ -141,33 +170,12 @@ python run_models.py \
 
 ❗️Note that paths of datasets and saving dirs may be different on personal computers, please check them in the configuration files.
 
-## ❖ Citing SAITS
-If you find SAITS is helpful to your research, please cite our paper as below, 
-⭐️star this repository, and recommend it to others who you think may need it. 🤗
-
-```bibtex
-@article{DU2023SAITS,
-title = {{SAITS: Self-Attention-based Imputation for Time Series}},
-journal = {Expert Systems with Applications},
-volume = {219},
-pages = {119619},
-year = {2023},
-issn = {0957-4174},
-doi = {https://doi.org/10.1016/j.eswa.2023.119619},
-url = {https://www.sciencedirect.com/science/article/pii/S0957417423001203},
-author = {Wenjie Du and David Cote and Yan Liu},
-}
-```
-
-or
-
-`Wenjie Du, David Cote, and Yan Liu. SAITS: Self-Attention-based Imputation for Time Series. Expert Systems with Applications, 219:119619, 2023.`
 
 ## ❖ Acknowledgments
 Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support.
 Thanks to Ciena for providing computing resources.
 Thanks to all our reviewers for helping improve the quality of this paper.
-And thank you all for your attention to this work! ❤️
+And thank you all for your attention to this work.
 
 ### ✨Stars/forks/issues/PRs are all welcome!
 
@@ -181,4 +189,4 @@ And thank you all for your attention to this work! ❤️
 
 ## ❖ Last but Not Least
 If you have any additional questions or have interests in collaboration, 
-please take a look at [my GitHub profile](https://github.com/WenjieDu) and feel free to contact me😃.
+please take a look at [my GitHub profile](https://github.com/WenjieDu) and feel free to contact me 😃.
