@@ -5,15 +5,17 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Python-v3-yellowgreen" />
-    <img alt="powered by Pytorch" src="https://img.shields.io/badge/PyTorch-❤️-bbcdc5?logo=pytorch&logoColor=white">
+    <img src="https://img.shields.io/badge/Python-v3-E97040?logo=python&logoColor=white" />
+    <img alt="powered by Pytorch" src="https://img.shields.io/badge/PyTorch-❤️-F8C6B5?logo=pytorch&logoColor=white">
     <img src="https://img.shields.io/badge/Conda-Supported-lightgreen?style=social&logo=anaconda" />
-    <img src="https://img.shields.io/badge/License-GPL--v3-lightgreen" />
+    <a href="https://github.com/WenjieDu/SAITS/blob/main/LICENSE">
+        <img src="https://img.shields.io/badge/License-MIT-3C7699" />
+    </a>
     <a href="https://arxiv.org/abs/2202.08516">
-        <img src="https://img.shields.io/badge/arXiv-preprint-success" />
+        <img src="https://img.shields.io/badge/arXiv-preprint-F8F7F0" />
     </a>
     <a href="https://doi.org/10.1016/j.eswa.2023.119619">
-        <img src="https://img.shields.io/badge/ESWA-accepted-255674" />
+        <img src="https://img.shields.io/badge/ESWA-accepted-75C1C4" />
     </a>
     <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
