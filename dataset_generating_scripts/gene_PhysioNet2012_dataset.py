@@ -33,6 +33,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from tsdb import pickle_dump
 
 sys.path.append("..")
 from modeling.utils import setup_logger
@@ -233,4 +234,5 @@ if __name__ == "__main__":
     )
 
     saving_into_h5(dataset_saving_dir, processed_data, classification_dataset=True)
+    pickle_dump(scaler, os.path.join(dataset_saving_dir, 'scaler'))
     logger.info(f"All done. Saved to {dataset_saving_dir}.")

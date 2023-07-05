@@ -47,3 +47,7 @@ unzip PRSA2017_Data_20130301-20170228.zip
 cd .. && mkdir Electricity && cd Electricity
 wget https://archive.ics.uci.edu/ml/machine-learning-databases/00321/LD2011_2014.txt.zip
 unzip LD2011_2014.txt.zip
+
+# for Electricity Transformer Temperature (ETT)
+cd .. && mkdir ETT && cd ETT
+wget https://raw.githubusercontent.com/zhouhaoyi/ETDataset/main/ETT-small/ETTm1.csv

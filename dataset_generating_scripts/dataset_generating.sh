@@ -46,3 +46,11 @@ python gene_UCI_electricity_dataset.py \
   --dataset_name Electricity_seqlen100_01masked \
   --saving_path ../generated_datasets
 
+# generate ETTm1 dataset
+python gene_ETTm1_dataset.py \
+  --file_path RawData/ETT/ETTm1.csv \
+  --artificial_missing_rate 0.1 \
+  --seq_len 24 \
+  --sliding_len 12 \
+  --dataset_name ETTm1_seqlen24_01masked \
+  --saving_path ../generated_datasets

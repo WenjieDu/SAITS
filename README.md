@@ -33,12 +33,12 @@ Basically you can take it as a validated framework for time series imputation. M
 Therefore, you're welcome to modify SAITS for your own research purpose and domain applications.
 Of course, it probably needs a bit of modification in the model structure or loss functions for specific scenarios or data input.
 
-Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps your research.
+🤗 Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps your research.
 Please star🌟 this repo to help others notice SAITS if you think it is useful. 
 It really means a lot to my open-source work. Thank you! 
 BTW, you may also like [PyPOTS](https://github.com/WenjieDu/PyPOTS) for easily modeling your partially-observed time-series datasets.
 
-**‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code 😊**
+**‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
 
 > <a href='https://github.com/WenjieDu/PyPOTS'><img src='https://raw.githubusercontent.com/WenjieDu/PyPOTS/main/docs/_static/figs/PyPOTS_logo.svg?sanitize=true' width='120' align='right' /></a> 📣 Attention please: <br>
 > SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox for data mining on POTS (Partially-Observed Time Series). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉 
@@ -90,9 +90,6 @@ Please refer to our [full paper](https://arxiv.org/pdf/2202.08516.pdf) for more 
 Here we only show the two main components of our method: the joint-optimization training approach and SAITS structure.
 For the detailed description and explanation, please read our [full paper](https://arxiv.org/pdf/2202.08516.pdf).
 
-<!-- <details>
-  <summary><b>👉 Click here to see the figures of our model training approach and SAITS structure 👀</b></summary> -->
-
 <div align="center">
 <img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/Training approach.svg?sanitize=true" alt="Training approach" title="Training approach" width="800"/>
 
@@ -103,7 +100,6 @@ For the detailed description and explanation, please read our [full paper](https
 <b>Fig. 2: SAITS structure</b>
 
 </div>
-<!-- </details> -->
 
 
 ## ❖ Citing SAITS
@@ -174,7 +170,7 @@ python run_models.py \
 
 
 ## ❖ Acknowledgments
-Thanks to Mitacs and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support.
+Thanks to Ciena, Mitacs, and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support.
 Thanks to Ciena for providing computing resources.
 Thanks to all our reviewers for helping improve the quality of this paper.
 And thank you all for your attention to this work.
