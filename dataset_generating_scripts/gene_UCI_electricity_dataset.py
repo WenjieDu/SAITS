@@ -31,6 +31,7 @@ import sys
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+from tsdb import pickle_dump
 
 sys.path.append("..")
 from modeling.utils import setup_logger
@@ -84,7 +85,7 @@ if __name__ == "__main__":
     logger.info(f"months selected as test set are {selected_as_test}")
     selected_as_val = unique_months[
         10:20
-    ]  # select the 11st - the 20th months as val set
+    ]  # select the 11th - the 20th months as val set
     logger.info(f"months selected as val set are {selected_as_val}")
     selected_as_train = unique_months[20:]  # use left months as train set
     logger.info(f"months selected as train set are {selected_as_train}")
@@ -143,4 +144,5 @@ if __name__ == "__main__":
     )
 
     saving_into_h5(dataset_saving_dir, processed_data, classification_dataset=False)
+    pickle_dump(scaler, os.path.join(dataset_saving_dir, 'scaler'))
     logger.info(f"All done. Saved to {dataset_saving_dir}.")

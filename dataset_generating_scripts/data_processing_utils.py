@@ -31,19 +31,23 @@ import h5py
 import numpy as np
 
 
-def window_truncate(feature_vectors, seq_len):
-    """Generate time series samples, truncating windows from time-series data with a given sequence length.
+def window_truncate(feature_vectors, seq_len, sliding_len=None):
+    """ Generate time series samples, truncating windows from time-series data with a given sequence length.
     Parameters
     ----------
     feature_vectors: time series data, len(shape)=2, [total_length, feature_num]
     seq_len: sequence length
+    sliding_len: size of the sliding window
     """
-    start_indices = np.asarray(range(feature_vectors.shape[0] // seq_len)) * seq_len
+    sliding_len = seq_len if sliding_len is None else sliding_len
+    total_len = feature_vectors.shape[0]
+    start_indices = np.asarray(range(total_len // sliding_len)) * sliding_len
+    if total_len - start_indices[-1] * sliding_len < seq_len:  # remove the last one if left length is not enough
+        start_indices = start_indices[:-1]
     sample_collector = []
     for idx in start_indices:
-        sample_collector.append(feature_vectors[idx : idx + seq_len])
-
-    return np.asarray(sample_collector).astype("float32")
+        sample_collector.append(feature_vectors[idx: idx + seq_len])
+    return np.asarray(sample_collector).astype('float32')
 
 
 def random_mask(vector, artificial_missing_rate):
