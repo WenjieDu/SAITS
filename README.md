@@ -33,7 +33,7 @@ Basically you can take it as a validated framework for time series imputation. M
 Therefore, you're welcome to modify SAITS for your own research purpose and domain applications.
 Of course, it probably needs a bit of modification in the model structure or loss functions for specific scenarios or data input.
 
-🤗 Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps your research.
+🤗 Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps with your research.
 Please star🌟 this repo to help others notice SAITS if you think it is useful. 
 It really means a lot to my open-source work. Thank you! 
 BTW, you may also like [PyPOTS](https://github.com/WenjieDu/PyPOTS) for easily modeling your partially-observed time-series datasets.
@@ -103,7 +103,7 @@ For the detailed description and explanation, please read our [full paper](https
 
 
 ## ❖ Citing SAITS
-If you find SAITS is helpful to your research, please cite our paper as below, 
+If you find SAITS is helpful to your work, please cite our paper as below, 
 ⭐️star this repository, and recommend it to others who you think may need it. 🤗 Thank you!
 
 ```bibtex
