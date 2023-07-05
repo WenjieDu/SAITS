@@ -13,6 +13,7 @@ dependencies:
   - conda-forge::h5py
   - conda-forge::pandas
   - conda-forge::tensorboard
+  - conda-forge::tsdb
   - pytorch::pytorch >=1.8.1
   - pip:
     - nni==2.1
