@@ -1,6 +1,6 @@
 <p align="center">
     <a id="SAITS" href="#SAITS">
-        <img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/SAITS full title.jpg" alt="SAITS Title" title="SAITS Title" width="600"/>
+        <img src="https://github.com/WenjieDu/SAITS/blob/2c4c28167f1f4db8c21e9bad4c0aa15fe107a8d0/figs/SAITS%20full%20title.jpg" alt="SAITS Title" title="SAITS Title" width="600"/>
     </a>
 </p>
 
