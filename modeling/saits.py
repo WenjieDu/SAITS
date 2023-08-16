@@ -129,19 +129,19 @@ class SAITS(nn.Module):
 
         self.dropout = nn.Dropout(p=dropout)
         self.position_enc = PositionalEncoding(d_model, n_position=d_time)
-        # for operation on time dim
+        # for the 1st block
         self.embedding_1 = nn.Linear(actual_d_feature, d_model)
         self.reduce_dim_z = nn.Linear(d_model, d_feature)
-        # for operation on measurement dim
+        # for the 2nd block
         self.embedding_2 = nn.Linear(actual_d_feature, d_model)
         self.reduce_dim_beta = nn.Linear(d_model, d_feature)
         self.reduce_dim_gamma = nn.Linear(d_feature, d_feature)
-        # for delta decay factor
+        # for the 3rd block
         self.weight_combine = nn.Linear(d_feature + d_time, d_feature)
 
     def impute(self, inputs):
         X, masks = inputs["X"], inputs["missing_mask"]
-        # first DMSA block
+        # the first DMSA block
         input_X_for_first = torch.cat([X, masks], dim=2) if self.input_with_mask else X
         input_X_for_first = self.embedding_1(input_X_for_first)
         enc_output = self.dropout(
@@ -159,7 +159,7 @@ class SAITS(nn.Module):
         X_tilde_1 = self.reduce_dim_z(enc_output)
         X_prime = masks * X + (1 - masks) * X_tilde_1
 
-        # second DMSA block
+        # the second DMSA block
         input_X_for_second = (
             torch.cat([X_prime, masks], dim=2) if self.input_with_mask else X_prime
         )
@@ -178,7 +178,7 @@ class SAITS(nn.Module):
 
         X_tilde_2 = self.reduce_dim_gamma(F.relu(self.reduce_dim_beta(enc_output)))
 
-        # attention-weighted combine
+        # the attention-weighted combination block
         attn_weights = attn_weights.squeeze(dim=1)  # namely term A_hat in math algo
         if len(attn_weights.shape) == 4:
             # if having more than 1 head, then average attention weights from all heads
@@ -191,9 +191,8 @@ class SAITS(nn.Module):
         )  # namely term eta
         # combine X_tilde_1 and X_tilde_2
         X_tilde_3 = (1 - combining_weights) * X_tilde_2 + combining_weights * X_tilde_1
-        X_c = (
-            masks * X + (1 - masks) * X_tilde_3
-        )  # replace non-missing part with original data
+        # replace non-missing part with original data
+        X_c = masks * X + (1 - masks) * X_tilde_3
         return X_c, [X_tilde_1, X_tilde_2, X_tilde_3]
 
     def forward(self, inputs, stage):
