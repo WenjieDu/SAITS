@@ -32,15 +32,16 @@ SAITS is the first work applying pure self-attention and without any recursive d
 Basically you can take it as a validated framework for time series imputation. More generally, you can use it for sequence imputation. 
 Therefore, you're welcome to modify SAITS for your own research purpose and domain applications.
 Of course, it probably needs a bit of modification in the model structure or loss functions for specific scenarios or data input.
+And this is [an incomplete list](https://scholar.google.com/scholar?q=%E2%80%9CSAITS%E2%80%9D+%22time+series%22+%22Du%22&hl=en&as_ylo=2022) of scientific research referencing SAITS in their papers. 
 
-🤗 Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps with your research.
+🤗 Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps with your work.
 Please star🌟 this repo to help others notice SAITS if you think it is useful. 
-It really means a lot to my open-source work. Thank you! 
+It really means a lot to my open-source research. Thank you! 
 BTW, you may also like [PyPOTS](https://github.com/WenjieDu/PyPOTS) for easily modeling your partially-observed time-series datasets.
 
 **‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
 
-> <a href='https://github.com/WenjieDu/PyPOTS'><img src='https://pypots.com/figs/pypots_logos/PyPOTS_logo_FFBG.svg?sanitize=true' width='120' align='right' /></a> 📣 Attention please: <br>
+> <a href='https://github.com/WenjieDu/PyPOTS'><img src='https://pypots.com/figs/pypots_logos/PyPOTS_logo_FFBG.svg?sanitize=true' width='130' align='right' /></a> 📣 Attention please: <br>
 > SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox for data mining on POTS (Partially-Observed Time Series). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉 
 
 <details open>
