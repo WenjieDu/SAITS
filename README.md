@@ -115,8 +115,8 @@ volume = {219},
 pages = {119619},
 year = {2023},
 issn = {0957-4174},
-doi = {https://doi.org/10.1016/j.eswa.2023.119619},
-url = {https://www.sciencedirect.com/science/article/pii/S0957417423001203},
+doi = {10.1016/j.eswa.2023.119619},
+url = {https://arxiv.org/abs/2202.08516},
 author = {Wenjie Du and David Cote and Yan Liu},
 }
 ```
