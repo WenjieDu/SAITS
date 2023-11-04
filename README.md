@@ -36,7 +36,7 @@ And this is [an incomplete list](https://scholar.google.com/scholar?q=%E2%80%9CS
 
 🤗 Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps with your work.
 Please star🌟 this repo to help others notice SAITS if you think it is useful. 
-It really means a lot to my open-source research. Thank you! 
+It really means a lot to our open-source research. Thank you! 
 BTW, you may also like [PyPOTS](https://github.com/WenjieDu/PyPOTS) for easily modeling your partially-observed time-series datasets.
 
 **‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
@@ -49,12 +49,13 @@ BTW, you may also like [PyPOTS](https://github.com/WenjieDu/PyPOTS) for easily m
   <summary><b>👉 Click here to see the example 👀</b></summary>
 
 ``` python
-# Install PyPOTS first: pip install pypots==0.1.1
+# Install PyPOTS first: pip install pypots
 import numpy as np
 from sklearn.preprocessing import StandardScaler
-from pypots.data import load_specific_dataset, mcar, masked_fill
+from pypots.data import load_specific_dataset
 from pypots.imputation import SAITS
 from pypots.utils.metrics import cal_mae
+from pygrinder import mcar, masked_fill
 # Data preprocessing. Tedious, but PyPOTS can help. 🤓
 data = load_specific_dataset('physionet_2012')  # For datasets in PyPOTS database, PyPOTS will automatically download and extract it.
 X = data['X']
@@ -182,9 +183,9 @@ And thank you all for your attention to this work.
 <details open>
 <summary><b><i>👏 Click to View Stargazers and Forkers: </i></b></summary>
 
-[![Stargazers repo roster for @WenjieDu/SAITS](https://reporoster.com/stars/dark/WenjieDu/SAITS)](https://github.com/WenjieDu/SAITS/stargazers)
+[![Stargazers repo roster for @WenjieDu/SAITS](http://reporoster.com/stars/dark/WenjieDu/SAITS)](https://github.com/WenjieDu/SAITS/stargazers)
 
-[![Forkers repo roster for @WenjieDu/SAITS](https://reporoster.com/forks/dark/WenjieDu/SAITS)](https://github.com/WenjieDu/SAITS/network/members)
+[![Forkers repo roster for @WenjieDu/SAITS](http://reporoster.com/forks/dark/WenjieDu/SAITS)](https://github.com/WenjieDu/SAITS/network/members)
 </details>
 
 ## ❖ Last but Not Least
