@@ -11,11 +11,11 @@
     <a href="https://github.com/WenjieDu/SAITS/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-MIT-3C7699" />
     </a>
-    <a href="https://arxiv.org/abs/2202.08516">
-        <img src="https://img.shields.io/badge/arXiv-preprint-F8F7F0" />
-    </a>
     <a href="https://doi.org/10.1016/j.eswa.2023.119619">
-        <img src="https://img.shields.io/badge/ESWA-accepted-75C1C4" />
+        <img src="https://img.shields.io/badge/ESWA-published-75C1C4" />
+    </a>
+    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=j9qvUg0AAAAJ&citation_for_view=j9qvUg0AAAAJ:Y0pCki6q_DkC">
+        <img src="https://pypots.com/figs/citation_badges/saits.svg" />
     </a>
     <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
@@ -37,7 +37,11 @@ And this is [an incomplete list](https://scholar.google.com/scholar?q=%E2%80%9CS
 🤗 Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps with your work.
 Please star🌟 this repo to help others notice SAITS if you think it is useful. 
 It really means a lot to our open-source research. Thank you! 
-BTW, you may also like [PyPOTS](https://github.com/WenjieDu/PyPOTS) for easily modeling your partially-observed time-series datasets.
+BTW, you may also like 
+<a href="https://github.com/WenjieDu/PyPOTS">
+PyPOTS <img align="center" src="https://img.shields.io/github/stars/WenjieDu/PyPOTS?style=social">
+</a>
+for easily modeling your partially-observed time-series datasets.
 
 **‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
 
@@ -89,9 +93,11 @@ Compared to another SOTA self-attention imputation model [NRTSI](https://github.
 fewer parameters and less imputation time in practice. 
 Please refer to our [full paper](https://arxiv.org/pdf/2202.08516.pdf) for more details about SAITS' performance.
 
+
 ## ❖ Brief Graphical Illustration of Our Methodology
 Here we only show the two main components of our method: the joint-optimization training approach and SAITS structure.
-For the detailed description and explanation, please read our [full paper](https://arxiv.org/pdf/2202.08516.pdf).
+For the detailed description and explanation, please read our full paper `Paper_SAITS.pdf` in this repo 
+or [on arXiv](https://arxiv.org/pdf/2202.08516.pdf).
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/Training approach.svg?sanitize=true" alt="Training approach" title="Training approach" width="800"/>
@@ -187,6 +193,7 @@ And thank you all for your attention to this work.
 
 [![Forkers repo roster for @WenjieDu/SAITS](http://reporoster.com/forks/dark/WenjieDu/SAITS)](https://github.com/WenjieDu/SAITS/network/members)
 </details>
+
 
 ## ❖ Last but Not Least
 If you have any additional questions or have interests in collaboration, 
