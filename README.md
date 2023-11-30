@@ -1,6 +1,6 @@
 <p align="center">
     <a id="SAITS" href="#SAITS">
-        <img src="https://raw.githubusercontent.com/WenjieDu/SAITS/main/figs/SAITS%20full%20title.jpg" alt="SAITS Title" title="SAITS Title" width="600"/>
+        <img src="https://pypots.com/figs/pypots_logos/SAITS/banner.jpg" alt="SAITS Title" title="SAITS Title" width="80%"/>
     </a>
 </p>
 
@@ -9,10 +9,10 @@
     <img alt="powered by Pytorch" src="https://img.shields.io/badge/PyTorch-❤️-F8C6B5?logo=pytorch&logoColor=white">
     <img src="https://img.shields.io/badge/Conda-Supported-lightgreen?style=social&logo=anaconda" />
     <a href="https://github.com/WenjieDu/SAITS/blob/main/LICENSE">
-        <img src="https://img.shields.io/badge/License-MIT-3C7699" />
+        <img src="https://img.shields.io/badge/License-MIT-3C7699?logo=opensourceinitiative&logoColor=white" />
     </a>
     <a href="https://doi.org/10.1016/j.eswa.2023.119619">
-        <img src="https://img.shields.io/badge/ESWA-published-75C1C4" />
+        <img src="https://img.shields.io/badge/ESWA-published-75C1C4?logo=elsevier&color=FF6C00" />
     </a>
     <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=j9qvUg0AAAAJ&citation_for_view=j9qvUg0AAAAJ:Y0pCki6q_DkC">
         <img src="https://pypots.com/figs/citation_badges/saits.svg" />
