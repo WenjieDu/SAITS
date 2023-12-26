@@ -15,7 +15,7 @@
         <img src="https://img.shields.io/badge/ESWA-published-75C1C4?logo=elsevier&color=FF6C00" />
     </a>
     <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=j9qvUg0AAAAJ&citation_for_view=j9qvUg0AAAAJ:Y0pCki6q_DkC">
-        <img src="https://pypots.com/figs/citation_badges/saits.svg" />
+        <img src="https://img.shields.io/endpoint?url=https://pypots.com/figs/citation_badges/saits.json" />
     </a>
     <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
