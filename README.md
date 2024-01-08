@@ -23,7 +23,7 @@
 The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) 
 (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal
 *[Expert Systems with Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)*
-[2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1 (中科院-1区), CCF-C]. You may never hear of ESWA, 
+[2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1, CCF-C]. You may never hear of ESWA, 
 while this journal was ranked 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 
 ([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), 
 and [here is the current ranking list](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) for your information.
@@ -53,28 +53,32 @@ for easily modeling your partially-observed time-series datasets.
   <summary><b>👉 Click here to see the example 👀</b></summary>
 
 ``` python
-# Install PyPOTS first: pip install pypots
 import numpy as np
 from sklearn.preprocessing import StandardScaler
+from pygrinder import mcar
 from pypots.data import load_specific_dataset
 from pypots.imputation import SAITS
-from pypots.utils.metrics import cal_mae
-from pygrinder import mcar, masked_fill
-# Data preprocessing. Tedious, but PyPOTS can help. 🤓
-data = load_specific_dataset('physionet_2012')  # For datasets in PyPOTS database, PyPOTS will automatically download and extract it.
+from pypots.utils.metrics import calc_mae
+
+# Data preprocessing. Tedious, but PyPOTS can help.
+data = load_specific_dataset('physionet_2012')  # PyPOTS will automatically download and extract it.
 X = data['X']
 num_samples = len(X['RecordID'].unique())
 X = X.drop(['RecordID', 'Time'], axis = 1)
 X = StandardScaler().fit_transform(X.to_numpy())
 X = X.reshape(num_samples, 48, -1)
-X_intact, X, missing_mask, indicating_mask = mcar(X, 0.1) # hold out 10% observed values as ground truth
-X = masked_fill(X, 1 - missing_mask, np.nan)
-# Model training. This is PyPOTS showtime. 💪
+X_ori = X  # keep X_ori for validation
+X = mcar(X, 0.1)  # randomly hold out 10% observed values as ground truth
+dataset = {"X": X}  # X for model input
+print(X.shape)  # (11988, 48, 37), 11988 samples, 48 time steps, 37 features
+
+# Model training. This is PyPOTS showtime.
 saits = SAITS(n_steps=48, n_features=37, n_layers=2, d_model=256, d_inner=128, n_heads=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
-dataset = {"X": X}
-saits.fit(dataset)  # train the model. Here I use the whole dataset as the training set, because ground truth is not visible to the model.
+# Here I use the whole dataset as the training set because ground truth is not visible to the model, you can also split it into train/val/test sets
+saits.fit(dataset)
 imputation = saits.impute(dataset)  # impute the originally-missing values and artificially-missing values
-mae = cal_mae(imputation, X_intact, indicating_mask)  # calculate mean absolute error on the ground truth (artificially-missing values)
+indicating_mask = np.isnan(X) ^ np.isnan(X_ori)  # indicating mask for imputation error calculation
+mae = calc_mae(imputation, np.nan_to_num(X_ori), indicating_mask)  # calculate mean absolute error on the ground truth (artificially-missing values)
 ```
 
 </details>
@@ -116,7 +120,7 @@ If you find SAITS is helpful to your work, please cite our paper as below,
 ⭐️star this repository, and recommend it to others who you think may need it. 🤗 Thank you!
 
 ```bibtex
-@article{DU2023SAITS,
+@article{du2023saits,
 title = {{SAITS: Self-Attention-based Imputation for Time Series}},
 journal = {Expert Systems with Applications},
 volume = {219},
