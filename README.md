@@ -23,14 +23,14 @@
 The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) 
 (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal
 *[Expert Systems with Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)*
-[2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1, CCF-C]. You may never hear of ESWA, 
+[2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1, CCF-C]. You may never have heard of ESWA, 
 while this journal was ranked 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 
 ([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), 
 and [here is the current ranking list](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) for your information.
 
-SAITS is the first work applying pure self-attention and without any recursive design in the algorithm for general time series imputation.
+SAITS is the first work applying pure self-attention without any recursive design in the algorithm for general time series imputation.
 Basically you can take it as a validated framework for time series imputation. More generally, you can use it for sequence imputation. 
-Therefore, you're welcome to modify SAITS for your own research purpose and domain applications.
+Besides, the code here is open source under the MIT license. Therefore, you're welcome to modify the SAITS code for your own research purpose and domain applications.
 Of course, it probably needs a bit of modification in the model structure or loss functions for specific scenarios or data input.
 And this is [an incomplete list](https://scholar.google.com/scholar?q=%E2%80%9CSAITS%E2%80%9D+%22time+series%22+%22Du%22&hl=en&as_ylo=2022) of scientific research referencing SAITS in their papers. 
 
@@ -45,7 +45,7 @@ for easily modeling your partially-observed time-series datasets.
 
 **‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
 
-<a href='https://github.com/WenjieDu/PyPOTS'><img src='https://pypots.com/figs/pypots_logos/PyPOTS_logo_FFBG.svg' width='130' align='right' /></a>
+<a href='https://github.com/WenjieDu/PyPOTS'><img src='https://pypots.com/figs/pypots_logos/PyPOTS/logo_FFBG.svg' width='130' align='right' /></a>
 > 📣 Attention please: <br>
 > SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox for data mining on POTS (Partially-Observed Time Series). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉 
 
@@ -161,7 +161,7 @@ dir [`dataset_generating_scripts`](https://github.com/WenjieDu/SAITS/tree/main/d
 
 After data generation, train and test your model, for example,
 
-```bash
+```shell
 # create a dir to save logs and results
 mkdir NIPS_results
 
@@ -187,6 +187,7 @@ Thanks to Ciena, Mitacs, and NSERC (Natural Sciences and Engineering Research Co
 Thanks to Ciena for providing computing resources.
 Thanks to all our reviewers for helping improve the quality of this paper.
 And thank you all for your attention to this work.
+
 
 ### ✨Stars/forks/issues/PRs are all welcome!
 
