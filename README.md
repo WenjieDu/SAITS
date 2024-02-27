@@ -20,13 +20,18 @@
     <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
+ 🎉 <sub>**[Updates in Feb 2024] Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
+The code is open source in the GitHub repo [Awesome_Imputation](https://github.com/WenjieDu/Awesome_Imputation).
+We comprehensively review the literature of the state-of-the-art deep-learning imputation methods for time series, 
+provide a taxonomy for them, and discuss the challenges and future directions in this field.** </sub>
+
 The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) 
 (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal
 *[Expert Systems with Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)*
 [2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1, CCF-C]. You may never have heard of ESWA, 
-while this journal was ranked 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 
-([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), 
-and [here is the current ranking list](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) for your information.
+while it was ranked 1st in Google Scholar under the top publications of Artificial Intelligence in 2016 
+([info source](https://www.sciencedirect.com/journal/expert-systems-with-applications/about/news#expert-systems-with-applications-is-currently-ranked-no1-in)), and is still the top 1 AI journal according to Google Scholar metrics 
+([here is the current ranking list](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) FYI).
 
 SAITS is the first work applying pure self-attention without any recursive design in the algorithm for general time series imputation.
 Basically you can take it as a validated framework for time series imputation. More generally, you can use it for sequence imputation. 
