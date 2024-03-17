@@ -20,12 +20,15 @@
     <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
- 🎉 <sub>**[Updates in Feb 2024] Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
+> [!TIP]
+> 🎉 <sub>**[Updates in Feb 2024] Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
 The code is open source in the GitHub repo [Awesome_Imputation](https://github.com/WenjieDu/Awesome_Imputation).
 We comprehensively review the literature of the state-of-the-art deep-learning imputation methods for time series, 
 provide a taxonomy for them, and discuss the challenges and future directions in this field.** </sub>
 
-The official code repository for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) 
+**‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
+
+The official code repository is for the paper [SAITS: Self-Attention-based Imputation for Time Series](https://doi.org/10.1016/j.eswa.2023.119619) 
 (preprint on arXiv is [here](https://arxiv.org/abs/2202.08516)), which has been accepted by the journal
 *[Expert Systems with Applications (ESWA)](https://www.sciencedirect.com/journal/expert-systems-with-applications)*
 [2022 IF 8.665, CiteScore 12.2, JCR-Q1, CAS-Q1, CCF-C]. You may never have heard of ESWA, 
@@ -48,11 +51,12 @@ PyPOTS <img align="center" src="https://img.shields.io/github/stars/WenjieDu/PyP
 </a>
 for easily modeling your partially-observed time-series datasets.
 
-**‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
-
-<a href='https://github.com/WenjieDu/PyPOTS'><img src='https://pypots.com/figs/pypots_logos/PyPOTS/logo_FFBG.svg' width='130' align='right' /></a>
-> 📣 Attention please: <br>
-> SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox for data mining on POTS (Partially-Observed Time Series). An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉 
+> [!IMPORTANT]
+> <a href='https://github.com/WenjieDu/PyPOTS'><img src='https://pypots.com/figs/pypots_logos/PyPOTS/logo_FFBG.svg' width='130' align='right' /></a>
+> **📣 Attention please:**
+> 
+> SAITS now is available in [PyPOTS](https://github.com/WenjieDu/PyPOTS), a Python toolbox for data mining on POTS (Partially-Observed Time Series). 
+> An example of training SAITS for imputing dataset PhysioNet-2012 is shown below. With [PyPOTS](https://github.com/WenjieDu/PyPOTS), easy peasy! 😉 
 
 <details open>
   <summary><b>👉 Click here to see the example 👀</b></summary>
@@ -75,7 +79,7 @@ X = X.reshape(num_samples, 48, -1)
 X_ori = X  # keep X_ori for validation
 X = mcar(X, 0.1)  # randomly hold out 10% observed values as ground truth
 dataset = {"X": X}  # X for model input
-print(X.shape)  # (11988, 48, 37), 11988 samples, 48 time steps, 37 features
+print(X.shape)  # (11988, 48, 37), 11988 samples and each sample has 48 time steps, 37 features
 
 # Model training. This is PyPOTS showtime.
 saits = SAITS(n_steps=48, n_features=37, n_layers=2, d_model=256, d_inner=128, n_heads=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
@@ -85,6 +89,14 @@ imputation = saits.impute(dataset)  # impute the originally-missing values and a
 indicating_mask = np.isnan(X) ^ np.isnan(X_ori)  # indicating mask for imputation error calculation
 mae = calc_mae(imputation, np.nan_to_num(X_ori), indicating_mask)  # calculate mean absolute error on the ground truth (artificially-missing values)
 ```
+
+<p align="center">
+<a href="https://pypots.com/ecosystem/">
+    <img src="https://pypots.com/figs/pypots_logos/Ecosystem/PyPOTS_Ecosystem_Pipeline.png" width="95%"/>
+</a>
+<br>
+<b> ☕️ Welcome to the universe of PyPOTS. Enjoy it and have fun!</b>
+</p>
 
 </details>
 
