@@ -6,16 +6,18 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/Python-v3-E97040?logo=python&logoColor=white" />
-    <img alt="powered by Pytorch" src="https://img.shields.io/badge/PyTorch-❤️-F8C6B5?logo=pytorch&logoColor=white">
-    <img src="https://img.shields.io/badge/Conda-Supported-lightgreen?style=social&logo=anaconda" />
+    <img alt="powered by PyTorch" src="https://img.shields.io/badge/PyTorch-❤️-F8C6B5?logo=pytorch&logoColor=white">
     <a href="https://github.com/WenjieDu/SAITS/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-MIT-3C7699?logo=opensourceinitiative&logoColor=white" />
     </a>
     <a href="https://doi.org/10.1016/j.eswa.2023.119619">
         <img src="https://img.shields.io/badge/ESWA-published-75C1C4?logo=elsevier&color=FF6C00" />
     </a>
-    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=j9qvUg0AAAAJ&citation_for_view=j9qvUg0AAAAJ:Y0pCki6q_DkC">
+    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=j9qvUg0AAAAJ&citation_for_view=j9qvUg0AAAAJ:Y0pCki6q_DkC" title="Paper citation number from Google Scholar">
         <img src="https://img.shields.io/endpoint?url=https://pypots.com/figs/citation_badges/saits.json" />
+    </a>
+    <a href="https://webofscience.clarivate.cn/wos/woscc/full-record/WOS:000943170100001?SID=USW2EC0D82x89d30RifxLVxJpho5Y" title="This is a Highly Cited Paper recognized by ESI">
+        <img src="https://pypots.com/figs/citation_badges/ESI_highly_cited_paper.svg" />
     </a>
     <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
@@ -62,6 +64,7 @@ for easily modeling your partially-observed time-series datasets.
   <summary><b>👉 Click here to see the example 👀</b></summary>
 
 ``` python
+# pip install pypots>=0.4
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from pygrinder import mcar
@@ -82,7 +85,7 @@ dataset = {"X": X}  # X for model input
 print(X.shape)  # (11988, 48, 37), 11988 samples and each sample has 48 time steps, 37 features
 
 # Model training. This is PyPOTS showtime.
-saits = SAITS(n_steps=48, n_features=37, n_layers=2, d_model=256, d_inner=128, n_heads=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
+saits = SAITS(n_steps=48, n_features=37, n_layers=2, d_model=256, d_ffn=128, n_heads=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
 # Here I use the whole dataset as the training set because ground truth is not visible to the model, you can also split it into train/val/test sets
 saits.fit(dataset)
 imputation = saits.impute(dataset)  # impute the originally-missing values and artificially-missing values
