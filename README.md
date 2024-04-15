@@ -23,10 +23,14 @@
 </p>
 
 > [!TIP]
-> 🎉 <sub>**[Updates in Feb 2024] Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
+> 🎉 **[Updates in Feb 2024] Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
 The code is open source in the GitHub repo [Awesome_Imputation](https://github.com/WenjieDu/Awesome_Imputation).
 We comprehensively review the literature of the state-of-the-art deep-learning imputation methods for time series, 
-provide a taxonomy for them, and discuss the challenges and future directions in this field.** </sub>
+provide a taxonomy for them, and discuss the challenges and future directions in this field.**
+> 
+> 🔥 **[Updates in Apr 2024] We applied SAITS embedding and training strategies to Crossformer, PatchTST, DLinear, ETSformer, FEDformer, 
+> Informer, Autoformer in <a href="https://github.com/WenjieDu/PyPOTS"><img src="https://pypots.com/figs/pypots_logos/PyPOTS/logo_FFBG.svg" width="26px" align="center"/> PyPOTS</a>
+> to enable them applicable to the time-series imputation task.**
 
 **‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
 
