@@ -23,14 +23,20 @@
 </p>
 
 > [!TIP]
-> 🎉 **[Updates in Feb 2024] Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
-The code is open source in the GitHub repo [Awesome_Imputation](https://github.com/WenjieDu/Awesome_Imputation).
-We comprehensively review the literature of the state-of-the-art deep-learning imputation methods for time series, 
-provide a taxonomy for them, and discuss the challenges and future directions in this field.**
+> **[Updates in Jun 2024]** 😎 The 1st comprehensive time-seres imputation benchmark paper
+[TSI-Bench: Benchmarking Time Series Imputation](https://arxiv.org/abs/2406.12747) now is public available.
+The code is open source in the repo [Awesome_Imputation](https://github.com/WenjieDu/Awesome_Imputation).
+With nearly 35,000 experiments, we provide a comprehensive benchmarking study on 28 imputation methods, 3 missing patterns (points, sequences, blocks),
+various missing rates, and 8 real-world datasets.
 > 
-> 🔥 **[Updates in Apr 2024] We applied SAITS embedding and training strategies to Crossformer, PatchTST, DLinear, ETSformer, FEDformer, 
-> Informer, Autoformer in <a href="https://github.com/WenjieDu/PyPOTS"><img src="https://pypots.com/figs/pypots_logos/PyPOTS/logo_FFBG.svg" width="26px" align="center"/> PyPOTS</a>
-> to enable them applicable to the time-series imputation task.**
+> **[Updates in May 2024]** 🔥 We applied SAITS embedding and training strategies to **iTransformer, FiLM, FreTS, Crossformer, PatchTST, DLinear, ETSformer, FEDformer, 
+> Informer, Autoformer, Non-stationary Transformer, Pyraformer, Reformer, SCINet, RevIN, Koopa, MICN, TiDE, and StemGNN** in <a href="https://github.com/WenjieDu/PyPOTS"><img src="https://pypots.com/figs/pypots_logos/PyPOTS/logo_FFBG.svg" width="26px" align="center"/> PyPOTS</a>
+> to enable them applicable to the time-series imputation task.
+>
+> **[Updates in Feb 2024]** 🎉 Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
+We comprehensively review the literature of the state-of-the-art deep-learning imputation methods for time series,
+provide a taxonomy for them, and discuss the challenges and future directions in this field.
+
 
 **‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
 
@@ -68,15 +74,11 @@ for easily modeling your partially-observed time-series datasets.
   <summary><b>👉 Click here to see the example 👀</b></summary>
 
 ``` python
-# pip install pypots>=0.4
+# Data preprocessing. Tedious, but PyPOTS can help.
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from pygrinder import mcar
 from pypots.data import load_specific_dataset
-from pypots.imputation import SAITS
-from pypots.utils.metrics import calc_mae
-
-# Data preprocessing. Tedious, but PyPOTS can help.
 data = load_specific_dataset('physionet_2012')  # PyPOTS will automatically download and extract it.
 X = data['X']
 num_samples = len(X['RecordID'].unique())
@@ -89,12 +91,16 @@ dataset = {"X": X}  # X for model input
 print(X.shape)  # (11988, 48, 37), 11988 samples and each sample has 48 time steps, 37 features
 
 # Model training. This is PyPOTS showtime.
+from pypots.imputation import SAITS
+from pypots.utils.metrics import calc_mae
 saits = SAITS(n_steps=48, n_features=37, n_layers=2, d_model=256, d_ffn=128, n_heads=4, d_k=64, d_v=64, dropout=0.1, epochs=10)
 # Here I use the whole dataset as the training set because ground truth is not visible to the model, you can also split it into train/val/test sets
-saits.fit(dataset)
+saits.fit(dataset)  # train the model on the dataset
 imputation = saits.impute(dataset)  # impute the originally-missing values and artificially-missing values
 indicating_mask = np.isnan(X) ^ np.isnan(X_ori)  # indicating mask for imputation error calculation
 mae = calc_mae(imputation, np.nan_to_num(X_ori), indicating_mask)  # calculate mean absolute error on the ground truth (artificially-missing values)
+saits.save("save_it_here/saits_physionet2012.pypots")  # save the model for future use
+saits.load("save_it_here/saits_physionet2012.pypots")  # reload the serialized model file for following imputation or training
 ```
 
 <p align="center">
