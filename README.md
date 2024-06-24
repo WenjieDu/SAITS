@@ -49,8 +49,9 @@ while it was ranked 1st in Google Scholar under the top publications of Artifici
 ([here is the current ranking list](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) FYI).
 
 SAITS is the first work applying pure self-attention without any recursive design in the algorithm for general time series imputation.
-Basically you can take it as a validated framework for time series imputation. More generally, you can use it for sequence imputation. 
-Besides, the code here is open source under the MIT license. Therefore, you're welcome to modify the SAITS code for your own research purpose and domain applications.
+Basically you can take it as a validated framework for time series imputation, like we've integrated 2️⃣0️⃣❗️ forecasting models into PyPOTS by adapting SAITS framework.
+More generally, you can use it for sequence imputation. Besides, the code here is open source under the MIT license. 
+Therefore, you're welcome to modify the SAITS code for your own research purpose and domain applications.
 Of course, it probably needs a bit of modification in the model structure or loss functions for specific scenarios or data input.
 And this is [an incomplete list](https://scholar.google.com/scholar?q=%E2%80%9CSAITS%E2%80%9D+%22time+series%22+%22Du%22&hl=en&as_ylo=2022) of scientific research referencing SAITS in their papers. 
 
