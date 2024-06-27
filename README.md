@@ -163,10 +163,25 @@ url = {https://arxiv.org/abs/2202.08516},
 author = {Wenjie Du and David Cote and Yan Liu},
 }
 ```
-
 or
+> Wenjie Du, David Cote, and Yan Liu.
+> SAITS: Self-Attention-based Imputation for Time Series.
+> Expert Systems with Applications, 219:119619, 2023.
 
-`Wenjie Du, David Cote, and Yan Liu. SAITS: Self-Attention-based Imputation for Time Series. Expert Systems with Applications, 219:119619, 2023.`
+In case you use PyPOTS for your research, please also cite the following paper:
+
+``` bibtex
+@article{du2023pypots,
+title={{PyPOTS: a Python toolbox for data mining on Partially-Observed Time Series}},
+author={Wenjie Du},
+journal={arXiv preprint arXiv:2305.18811},
+year={2023},
+}
+```
+or
+> Wenjie Du.
+> PyPOTS: a Python toolbox for data mining on Partially-Observed Time Series.
+> arXiv, abs/2305.18811, 2023.
 
 
 ## ❖ Repository Structure
