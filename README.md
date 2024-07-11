@@ -168,7 +168,27 @@ or
 > SAITS: Self-Attention-based Imputation for Time Series.
 > Expert Systems with Applications, 219:119619, 2023.
 
-In case you use PyPOTS for your research, please also cite the following paper:
+😎 Our latest survey and benchmarking research on time-series imputation may be also related to your work:
+
+```bibtex
+@article{du2024tsibench,
+title={TSI-Bench: Benchmarking Time Series Imputation},
+author={Wenjie Du and Jun Wang and Linglong Qian and Yiyuan Yang and Fanxing Liu and Zepu Wang and Zina Ibrahim and Haoxin Liu and Zhiyuan Zhao and Yingjie Zhou and Wenjia Wang and Kaize Ding and Yuxuan Liang and B. Aditya Prakash and Qingsong Wen},
+journal={arXiv preprint arXiv:2406.12747},
+year={2024}
+}
+```
+
+```bibtex
+@article{wang2024deep,
+title={Deep Learning for Multivariate Time Series Imputation: A Survey},
+author={Jun Wang and Wenjie Du and Wei Cao and Keli Zhang and Wenjia Wang and Yuxuan Liang and Qingsong Wen},
+journal={arXiv preprint arXiv:2402.04059},
+year={2024}
+}
+```
+
+🔥 In case you use PyPOTS for your research, please also cite the following paper:
 
 ``` bibtex
 @article{du2023pypots,
