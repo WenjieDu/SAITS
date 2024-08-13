@@ -54,11 +54,31 @@ def random_mask(vector, artificial_missing_rate):
     """generate indices for random mask"""
     assert len(vector.shape) == 1
     indices = np.where(~np.isnan(vector))[0].tolist()
-    indices = np.random.choice(indices, int(len(indices) * artificial_missing_rate))
+    indices = np.random.choice(indices, int(len(indices) * artificial_missing_rate), replace=False)
+    return indices
+
+def random_mask_block(vector, sample_num, seq_len, feature_num, block_len, mask_feature_num=1):
+    """generate indices for random mask, block missing"""
+    vector_copy = np.copy(vector.reshape([sample_num, seq_len, feature_num]))
+    for sample in range(sample_num):
+        # select features to use for masking
+        masked_features = np.random.permutation(feature_num)[:mask_feature_num]
+        for feature in masked_features:
+            avaliable_meas = np.where(~np.isnan(vector_copy[sample,:,feature]))[0]
+            miss_len = int(block_len)
+            if miss_len == seq_len:
+                miss_start = 0
+            else:
+                miss_start = np.random.randint(0,seq_len-miss_len)
+            miss_idx = avaliable_meas[miss_start:miss_start+miss_len]
+            # mark forced missing samples with Inf
+            vector_copy[sample,miss_idx,feature] = np.Inf
+    vector_copy = vector_copy.reshape(-1)
+    indices = np.where(vector_copy==np.Inf)[0].tolist()
     return indices
 
 
-def add_artificial_mask(X, artificial_missing_rate, set_name):
+def add_artificial_mask(X, artificial_missing_rate, set_name, mask_feature_num=1, mask_block_len=2, mask_type="sparse"):
     """Add artificial missing values.
     Parameters
     ----------
@@ -85,7 +105,13 @@ def add_artificial_mask(X, artificial_missing_rate, set_name):
         # if this is val/test set, then we need to add artificial missing values right now,
         # because we need they are fixed
         X = X.reshape(-1)
-        indices_for_holdout = random_mask(X, artificial_missing_rate)
+        if mask_type == "block":
+            indices_for_holdout = random_mask_block(X, sample_num, seq_len, feature_num, 
+                                                    mask_block_len, mask_feature_num)
+        elif mask_type == "sparse":
+            indices_for_holdout = random_mask(X, artificial_missing_rate)
+        else:
+            raise ValueError("Unsupported forced missing mask type")
         X_hat = np.copy(X)
         X_hat[indices_for_holdout] = np.nan  # X_hat contains artificial missing values
         missing_mask = (~np.isnan(X_hat)).astype(np.float32)

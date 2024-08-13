@@ -152,6 +152,7 @@ class LoadTrainDataset(LoadDataset):
             indices = np.random.choice(
                 indices,
                 round(len(indices) * self.artificial_missing_rate),
+                replace=False
             )
             X_hat = np.copy(X)
             X_hat[indices] = np.nan  # mask values selected by indices

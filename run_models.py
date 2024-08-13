@@ -481,7 +481,9 @@ def impute_all_missing_data(model, train_data, val_data, test_data):
                 else:  # then for self-attention based models, i.e. Transformer/SAITS
                     indices, X, missing_mask = map(lambda x: x.to(args.device), data)
                     inputs = {"indices": indices, "X": X, "missing_mask": missing_mask}
-                imputed_data, _ = model.impute(inputs)
+                #imputed_data, _ = model.impute(inputs)
+                result = model(inputs, "test")
+                imputed_data = result["imputed_data"]
                 indices_collector.append(indices)
                 imputations_collector.append(imputed_data)
 
