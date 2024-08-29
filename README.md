@@ -1,3 +1,20 @@
+
+> [!TIP]
+> **[Updates in Jun 2024]** 😎 The 1st comprehensive time-seres imputation benchmark paper
+[TSI-Bench: Benchmarking Time Series Imputation](https://arxiv.org/abs/2406.12747) now is public available.
+The code is open source in the repo [Awesome_Imputation](https://github.com/WenjieDu/Awesome_Imputation).
+With nearly 35,000 experiments, we provide a comprehensive benchmarking study on 28 imputation methods, 3 missing patterns (points, sequences, blocks),
+various missing rates, and 8 real-world datasets.
+> 
+> **[Updates in May 2024]** 🔥 We applied SAITS embedding and training strategies to **iTransformer, FiLM, FreTS, Crossformer, PatchTST, DLinear, ETSformer, FEDformer, 
+> Informer, Autoformer, Non-stationary Transformer, Pyraformer, Reformer, SCINet, RevIN, Koopa, MICN, TiDE, and StemGNN** in <a href="https://github.com/WenjieDu/PyPOTS"><img src="https://pypots.com/figs/pypots_logos/PyPOTS/logo_FFBG.svg" width="26px" align="center"/> PyPOTS</a>
+> to enable them applicable to the time-series imputation task.
+>
+> **[Updates in Feb 2024]** 🎉 Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
+We comprehensively review the literature of the state-of-the-art deep-learning imputation methods for time series,
+provide a taxonomy for them, and discuss the challenges and future directions in this field.
+
+
 <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="https://pypots.com/figs/pypots_logos/SAITS/banner.jpg" alt="SAITS Title" title="SAITS Title" width="80%"/>
@@ -22,21 +39,6 @@
     <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
-> [!TIP]
-> **[Updates in Jun 2024]** 😎 The 1st comprehensive time-seres imputation benchmark paper
-[TSI-Bench: Benchmarking Time Series Imputation](https://arxiv.org/abs/2406.12747) now is public available.
-The code is open source in the repo [Awesome_Imputation](https://github.com/WenjieDu/Awesome_Imputation).
-With nearly 35,000 experiments, we provide a comprehensive benchmarking study on 28 imputation methods, 3 missing patterns (points, sequences, blocks),
-various missing rates, and 8 real-world datasets.
-> 
-> **[Updates in May 2024]** 🔥 We applied SAITS embedding and training strategies to **iTransformer, FiLM, FreTS, Crossformer, PatchTST, DLinear, ETSformer, FEDformer, 
-> Informer, Autoformer, Non-stationary Transformer, Pyraformer, Reformer, SCINet, RevIN, Koopa, MICN, TiDE, and StemGNN** in <a href="https://github.com/WenjieDu/PyPOTS"><img src="https://pypots.com/figs/pypots_logos/PyPOTS/logo_FFBG.svg" width="26px" align="center"/> PyPOTS</a>
-> to enable them applicable to the time-series imputation task.
->
-> **[Updates in Feb 2024]** 🎉 Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
-We comprehensively review the literature of the state-of-the-art deep-learning imputation methods for time series,
-provide a taxonomy for them, and discuss the challenges and future directions in this field.
-
 
 **‼️Kind reminder: This document can <ins>help you solve many common questions</ins>, please read it before you run the code.**
 
@@ -49,11 +51,11 @@ while it was ranked 1st in Google Scholar under the top publications of Artifici
 ([here is the current ranking list](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) FYI).
 
 SAITS is the first work applying pure self-attention without any recursive design in the algorithm for general time series imputation.
-Basically you can take it as a validated framework for time series imputation, like we've integrated 2️⃣0️⃣❗️ forecasting models into PyPOTS by adapting SAITS framework.
+Basically you can take it as a validated framework for time series imputation, like we've integrated 2️⃣0️⃣ forecasting models into PyPOTS by adapting SAITS framework.
 More generally, you can use it for sequence imputation. Besides, the code here is open source under the MIT license. 
 Therefore, you're welcome to modify the SAITS code for your own research purpose and domain applications.
 Of course, it probably needs a bit of modification in the model structure or loss functions for specific scenarios or data input.
-And this is [an incomplete list](https://scholar.google.com/scholar?q=%E2%80%9CSAITS%E2%80%9D+%22time+series%22+%22Du%22&hl=en&as_ylo=2022) of scientific research referencing SAITS in their papers. 
+And this is [an incomplete list](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2022&q=%E2%80%9CSAITS%E2%80%9D+%22time+series%22) of scientific research referencing SAITS in their papers. 
 
 🤗 Please [cite SAITS](https://github.com/WenjieDu/SAITS#-citing-saits) in your publications if it helps with your work.
 Please star🌟 this repo to help others notice SAITS if you think it is useful. 
@@ -168,7 +170,7 @@ or
 > SAITS: Self-Attention-based Imputation for Time Series.
 > Expert Systems with Applications, 219:119619, 2023.
 
-😎 Our latest survey and benchmarking research on time-series imputation may be also related to your work:
+### 😎 Our latest survey and benchmarking research on time-series imputation may also be useful to your work:
 
 ```bibtex
 @article{du2024tsibench,
@@ -188,7 +190,7 @@ year={2024}
 }
 ```
 
-🔥 In case you use PyPOTS for your research, please also cite the following paper:
+### 🔥 In case you use PyPOTS in your research, please also cite the following paper:
 
 ``` bibtex
 @article{du2023pypots,
@@ -249,9 +251,9 @@ python run_models.py \
 
 
 ## ❖ Acknowledgments
-Thanks to Ciena, Mitacs, and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support.
-Thanks to Ciena for providing computing resources.
-Thanks to all our reviewers for helping improve the quality of this paper.
+Thanks to Ciena, Mitacs, and NSERC (Natural Sciences and Engineering Research Council of Canada) for funding support.  
+Thanks to all our reviewers for helping improve the quality of this paper.  
+Thanks to Ciena for providing computing resources.  
 And thank you all for your attention to this work.
 
 
