@@ -31,12 +31,11 @@ provide a taxonomy for them, and discuss the challenges and future directions in
         <img src="https://img.shields.io/badge/ESWA-published-75C1C4?logo=elsevier&color=FF6C00" />
     </a>
     <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=j9qvUg0AAAAJ&citation_for_view=j9qvUg0AAAAJ:Y0pCki6q_DkC" title="Paper citation number from Google Scholar">
-        <img src="https://img.shields.io/endpoint?url=https://pypots.com/figs/citation_badges/saits.json" />
+        <img src="https://pypots.com/figs/citation_badges/saits.svg" />
     </a>
     <a href="https://webofscience.clarivate.cn/wos/woscc/full-record/WOS:000943170100001?SID=USW2EC0D82x89d30RifxLVxJpho5Y" title="This is a Highly Cited Paper recognized by ESI">
         <img src="https://pypots.com/figs/citation_badges/ESI_highly_cited_paper.svg" />
     </a>
-    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWenjieDu%2FSAITS&count_bg=%23009A0A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visits&edge_flat=false" />
 </p>
 
 
@@ -51,7 +50,7 @@ while it was ranked 1st in Google Scholar under the top publications of Artifici
 ([here is the current ranking list](https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence) FYI).
 
 SAITS is the first work applying pure self-attention without any recursive design in the algorithm for general time series imputation.
-Basically you can take it as a validated framework for time series imputation, like we've integrated 2️⃣0️⃣ forecasting models into PyPOTS by adapting SAITS framework.
+Basically you can take it as a validated framework for time series imputation, like we've integrated more than 2️⃣0️⃣ forecasting models into PyPOTS by adapting SAITS framework.
 More generally, you can use it for sequence imputation. Besides, the code here is open source under the MIT license. 
 Therefore, you're welcome to modify the SAITS code for your own research purpose and domain applications.
 Of course, it probably needs a bit of modification in the model structure or loss functions for specific scenarios or data input.
