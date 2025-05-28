@@ -1,18 +1,17 @@
 
 > [!TIP]
+> **[Updates in May 2025]** 🎉 Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) gets accepted by IJCAI 2025!
+We comprehensively review the literature of the state-of-the-art deep-learning imputation methods for time series, provide a new taxonomy based on uncertainty and model architecture for them, systematically compare multiple toolkits, and discuss the challenges and future directions in this field.
+> 
 > **[Updates in Jun 2024]** 😎 The 1st comprehensive time-seres imputation benchmark paper
-[TSI-Bench: Benchmarking Time Series Imputation](https://arxiv.org/abs/2406.12747) now is public available.
+[TSI-Bench: Benchmarking Time Series Imputation](https://arxiv.org/abs/2406.12747) is now publicly available.
 The code is open source in the repo [Awesome_Imputation](https://github.com/WenjieDu/Awesome_Imputation).
 With nearly 35,000 experiments, we provide a comprehensive benchmarking study on 28 imputation methods, 3 missing patterns (points, sequences, blocks),
 various missing rates, and 8 real-world datasets.
 > 
 > **[Updates in May 2024]** 🔥 We applied SAITS embedding and training strategies to **iTransformer, FiLM, FreTS, Crossformer, PatchTST, DLinear, ETSformer, FEDformer, 
 > Informer, Autoformer, Non-stationary Transformer, Pyraformer, Reformer, SCINet, RevIN, Koopa, MICN, TiDE, and StemGNN** in <a href="https://github.com/WenjieDu/PyPOTS"><img src="https://pypots.com/figs/pypots_logos/PyPOTS/logo_FFBG.svg" width="26px" align="center"/> PyPOTS</a>
-> to enable them applicable to the time-series imputation task.
->
-> **[Updates in Feb 2024]** 🎉 Our survey paper [Deep Learning for Multivariate Time Series Imputation: A Survey](https://arxiv.org/abs/2402.04059) has been released on arXiv.
-We comprehensively review the literature of the state-of-the-art deep-learning imputation methods for time series,
-provide a taxonomy for them, and discuss the challenges and future directions in this field.
+> to enable them to be applicable to the time-series imputation task.
 
 
 <p align="center">
@@ -169,21 +168,20 @@ or
 > Expert Systems with Applications, 219:119619, 2023.
 
 ### 😎 Our latest survey and benchmarking research on time-series imputation may also be useful to your work:
+```bibtex
+@article{wang2025survey,
+title={Deep Learning for Multivariate Time Series Imputation: A Survey},
+author={Jun Wang and Wenjie Du and Yiyuan Yang and Linglong Qian and Wei Cao and Keli Zhang and Wenjia Wang and Yuxuan Liang and Qingsong Wen},
+booktitle = {Proceedings of the 34th International Joint Conference on Artificial Intelligence (IJCAI)},
+year={2025}
+}
+```
 
 ```bibtex
 @article{du2024tsibench,
 title={TSI-Bench: Benchmarking Time Series Imputation},
 author={Wenjie Du and Jun Wang and Linglong Qian and Yiyuan Yang and Fanxing Liu and Zepu Wang and Zina Ibrahim and Haoxin Liu and Zhiyuan Zhao and Yingjie Zhou and Wenjia Wang and Kaize Ding and Yuxuan Liang and B. Aditya Prakash and Qingsong Wen},
 journal={arXiv preprint arXiv:2406.12747},
-year={2024}
-}
-```
-
-```bibtex
-@article{wang2024deep,
-title={Deep Learning for Multivariate Time Series Imputation: A Survey},
-author={Jun Wang and Wenjie Du and Wei Cao and Keli Zhang and Wenjia Wang and Yuxuan Liang and Qingsong Wen},
-journal={arXiv preprint arXiv:2402.04059},
 year={2024}
 }
 ```
